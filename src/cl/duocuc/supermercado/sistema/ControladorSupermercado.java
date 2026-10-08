@@ -2,7 +2,6 @@ package cl.duocuc.supermercado.sistema;
 
 import cl.duocuc.supermercado.enums.CategoriaOferta;
 import cl.duocuc.supermercado.enums.Medida;
-import cl.duocuc.supermercado.interfaces.Registrable;
 import cl.duocuc.supermercado.modelo.Boleta;
 import cl.duocuc.supermercado.modelo.Comprador;
 import cl.duocuc.supermercado.modelo.Inventario;
@@ -10,39 +9,28 @@ import cl.duocuc.supermercado.modelo.Lacteo;
 import cl.duocuc.supermercado.modelo.Limpieza;
 import cl.duocuc.supermercado.modelo.Producto;
 import cl.duocuc.supermercado.modelo.Verdura;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // [REQUISITO: Package]
-// [REQUISITO: Interface]
 // [REQUISITO: Colecciones]
 // [REQUISITO: Menu - Scanner]
-// [REQUISITO: Persistencia]
 
-public class ControladorSupermercado implements Registrable, Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private static final String RUTA_DATOS = "data/supermercado.dat";
+public class ControladorSupermercado {
 
     private Inventario inv;
     private ArrayList<Comprador> clientes;
     private ArrayList<Boleta> boletas;
 
     private transient Scanner scanner;
+    private GuardadoSeguro guardador;
 
     public ControladorSupermercado() {
         this.inv = new Inventario();
         this.clientes = new ArrayList<>();
         this.boletas = new ArrayList<>();
         this.scanner = new Scanner(System.in);
+        this.guardador = new GuardadoSeguro(this);
     }
 
     public void precargarDatos() {
@@ -57,49 +45,6 @@ public class ControladorSupermercado implements Registrable, Serializable {
         clientes.add(new Comprador("98765432-1".intern(), "cristian ruiz"));
 
         System.out.println("Datos precargados correctamente.");
-    }
-
-    @Override
-    public void guardarDatos() {
-        // [REQUISITO: Persistencia]
-        File archivo = new File(RUTA_DATOS);
-        archivo.getParentFile().mkdirs();
-
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
-            oos.writeObject(inv);
-            oos.writeObject(clientes);
-            oos.writeObject(boletas);
-            System.out.println("Datos guardados exitosamente en: " + RUTA_DATOS);
-        } catch (IOException e) {
-            System.out.println("Error al guardar los datos: " + e.getMessage());
-        }
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void cargarDatos() {
-        // [REQUISITO: Persistencia]
-        File archivo = new File(RUTA_DATOS);
-        if (!archivo.exists()) {
-            System.out.println("No existe archivo de datos previo. Se inicia con datos vacíos.");
-            return;
-        }
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
-            this.inv = (Inventario) ois.readObject();
-            this.clientes = (ArrayList<Comprador>) ois.readObject();
-            this.boletas = (ArrayList<Boleta>) ois.readObject();
-
-            int i = 0;
-            while (i < clientes.size()) {
-                clientes.get(i).setRutComprador(clientes.get(i).getRutComprador().intern());
-                i = i + 1;
-            }
-
-            System.out.println("Datos cargados exitosamente desde: " + RUTA_DATOS);
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error al cargar los datos: " + e.getMessage());
-        }
     }
 
     public void iniciarMenu() {
@@ -144,10 +89,10 @@ public class ControladorSupermercado implements Registrable, Serializable {
                     verBoletas();
                     break;
                 case 7:
-                    guardarDatos();
+                    guardador.guardarDatos();
                     break;
                 case 8:
-                    cargarDatos();
+                    guardador.cargarDatos();
                     break;
                 case 9:
                     System.out.println("Saliendo del sistema...");
@@ -294,4 +239,6 @@ public class ControladorSupermercado implements Registrable, Serializable {
 
     public ArrayList<Boleta> getRegistroBoletas() { return boletas; }
     public void setRegistroBoletas(ArrayList<Boleta> boletas) { this.boletas = boletas; }
+
+    public GuardadoSeguro getGuardador() { return guardador; }
 }

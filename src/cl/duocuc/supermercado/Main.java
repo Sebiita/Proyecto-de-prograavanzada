@@ -13,7 +13,7 @@ public class Main {
         ControladorSupermercado controlador = new ControladorSupermercado();
 
         // Intenta cargar datos previos; si no existen, precarga datos de prueba.
-        controlador.cargarDatos();
+        controlador.getGuardador().cargarDatos();
 
         if (controlador.getInventarioTienda().getMapaProductos().isEmpty()
                 && controlador.getListaCompradores().isEmpty()) {
