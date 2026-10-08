@@ -149,19 +149,32 @@
         <mxCell id="controlador" value="&lt;b&gt;ControladorSupermercado&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="1060" y="40" width="320" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="ctrl_attr" value="- inv: Inventario&lt;br&gt;- clientes: ArrayList&amp;lt;Comprador&amp;gt;&lt;br&gt;- boletas: ArrayList&amp;lt;Boleta&amp;gt;&lt;br&gt;- scanner: Scanner" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="controlador">
-          <mxGeometry y="26" width="320" height="72" as="geometry" />
+        <mxCell id="ctrl_attr" value="- inv: Inventario&lt;br&gt;- clientes: ArrayList&amp;lt;Comprador&amp;gt;&lt;br&gt;- boletas: ArrayList&amp;lt;Boleta&amp;gt;&lt;br&gt;- scanner: Scanner&lt;br&gt;- guardador: GuardadoSeguro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="controlador">
+          <mxGeometry y="26" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="ctrl_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="controlador">
-          <mxGeometry y="98" width="320" height="8" as="geometry" />
+          <mxGeometry y="116" width="320" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="ctrl_met" value="+ precargarDatos(): void&lt;br&gt;+ guardarDatos(): void&lt;br&gt;+ cargarDatos(): void&lt;br&gt;+ iniciarMenu(): void&lt;br&gt;+ getters/setters" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="controlador">
-          <mxGeometry y="106" width="320" height="84" as="geometry" />
+        <mxCell id="ctrl_met" value="+ precargarDatos(): void&lt;br&gt;+ iniciarMenu(): void&lt;br&gt;+ getGuardador(): GuardadoSeguro&lt;br&gt;+ getters/setters" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="controlador">
+          <mxGeometry y="124" width="320" height="66" as="geometry" />
         </mxCell>
 
         
+        <mxCell id="guardadoseguro" value="&lt;b&gt;GuardadoSeguro&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="270" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_attr" value="- RUTA_DATOS: String&lt;br&gt;- ctrl: ControladorSupermercado" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="guardadoseguro">
+          <mxGeometry y="26" width="320" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="guardadoseguro">
+          <mxGeometry y="70" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_met" value="+ GuardadoSeguro(ctrl: ControladorSupermercado)&lt;br&gt;+ guardarDatos(): void&lt;br&gt;+ cargarDatos(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="guardadoseguro">
+          <mxGeometry y="78" width="320" height="52" as="geometry" />
+        </mxCell>
+
         <mxCell id="main" value="&lt;b&gt;Main&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="280" width="220" height="80" as="geometry" />
+          <mxGeometry x="1060" y="440" width="220" height="80" as="geometry" />
         </mxCell>
         <mxCell id="main_met" value="+ main(args: String[]): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="main">
           <mxGeometry y="26" width="220" height="54" as="geometry" />
@@ -185,12 +198,22 @@
         </mxCell>
 
         
-        <mxCell id="ctrl_impl_registrable" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;dashed=1;dashPattern=1 1;" edge="1" parent="1" source="controlador" target="registrable">
+        <mxCell id="gs_impl_registrable" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;dashed=1;dashPattern=1 1;" edge="1" parent="1" source="guardadoseguro" target="registrable">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1060" y="180" />
-              <mxPoint x="240" y="180" />
+              <mxPoint x="1220" y="270" />
+              <mxPoint x="1220" y="220" />
+              <mxPoint x="240" y="220" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ctrl_assoc_gs" value="" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;" edge="1" parent="1" source="controlador" target="guardadoseguro">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl_assoc_gs_label" value="1 1" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="ctrl_assoc_gs">
+          <mxGeometry x="0.3" relative="1" as="geometry">
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
 
