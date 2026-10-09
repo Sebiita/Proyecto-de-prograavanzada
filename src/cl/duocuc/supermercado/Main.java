@@ -24,3 +24,4 @@ public class Main {
         controlador.iniciarMenu();
     }
 }
+// lol quiero ver si esta bien
