@@ -62,6 +62,15 @@ public class Boleta implements Serializable {
         System.out.println("Boleta " + idBoleta + " procesada. Total: $" + String.format("%.2f", totalPagar));
     }
 
+    @Override
+    public String toString() {
+        return "Boleta " + idBoleta
+                + " | Comprador: " + (comprador != null ? comprador.getAlias() : "N/A")
+                + " | Productos: " + listaCompra.size()
+                + " | Total: $" + String.format("%.2f", totalPagar)
+                + " | Oferta: " + categoriaOferta;
+    }
+
     // Getters y Setters
     public String getIdBoleta() { return idBoleta; }
     public void setIdBoleta(String idBoleta) { this.idBoleta = idBoleta; }

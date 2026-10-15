@@ -54,13 +54,6 @@ public class GuardadoSeguro implements Registrable {
             ctrl.setListaCompradores((ArrayList<Comprador>) ois.readObject());
             ctrl.setRegistroBoletas((ArrayList<Boleta>) ois.readObject());
 
-            int i = 0;
-            while (i < ctrl.getListaCompradores().size()) {
-                String rut = ctrl.getListaCompradores().get(i).getRutComprador().intern();
-                ctrl.getListaCompradores().get(i).setRutComprador(rut);
-                i = i + 1;
-            }
-
             System.out.println("Datos cargados exitosamente desde: " + RUTA_DATOS);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al cargar los datos: " + e.getMessage());

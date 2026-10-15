@@ -39,6 +39,14 @@ public abstract class Producto implements Rankeable, Serializable {
         return this.vendidos * this.calcularPrecio();
     }
 
+    @Override
+    public String toString() {
+        return "[" + idProducto + "] " + denominacion
+                + " | Precio: $" + String.format("%.2f", calcularPrecio())
+                + " | Stock: " + stock + " " + unidad
+                + " | Vendidos: " + vendidos;
+    }
+
     // Getters y Setters
     public String getIdProducto() { return idProducto; }
     public void setIdProducto(String idProducto) { this.idProducto = idProducto; }

@@ -35,6 +35,13 @@ public class Comprador implements Rankeable, Serializable {
         return acumulado;
     }
 
+    @Override
+    public String toString() {
+        return "RUT: " + rutComprador + " | Alias: " + alias
+                + " | Boletas: " + historialBoletas.size()
+                + " | Total gastado: $" + String.format("%.2f", obtenerCriterioRanking());
+    }
+
     // Getters y Setters
     public String getRutComprador() { return rutComprador; }
     public void setRutComprador(String rutComprador) { this.rutComprador = rutComprador; }

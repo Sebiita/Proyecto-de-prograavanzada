@@ -41,8 +41,8 @@ public class ControladorSupermercado {
         inv.agregarProducto(new Limpieza("P005", "Detergente", 2500, 10, Medida.LITRO, false));
         inv.agregarProducto(new Limpieza("P006", "Cloro", 1500, 12, Medida.LITRO, true));
 
-        clientes.add(new Comprador("12345678-9".intern(), "Seba ruiz"));
-        clientes.add(new Comprador("98765432-1".intern(), "cristian ruiz"));
+        clientes.add(new Comprador("12345678-9", "Seba ruiz"));
+        clientes.add(new Comprador("98765432-1", "cristian ruiz"));
 
         System.out.println("Datos precargados correctamente.");
     }
@@ -156,7 +156,7 @@ public class ControladorSupermercado {
 
     private void agregarComprador() {
         System.out.print("Ingrese RUT del comprador: ");
-        String rut = scanner.nextLine().intern();
+        String rut = scanner.nextLine();
         System.out.print("Ingrese alias/nombre: ");
         String alias = scanner.nextLine();
         clientes.add(new Comprador(rut, alias));
@@ -174,13 +174,13 @@ public class ControladorSupermercado {
 
     private void realizarVenta() {
         System.out.print("Ingrese RUT del comprador: ");
-        String rut = scanner.nextLine().intern();
+        String rut = scanner.nextLine();
 
         Comprador comprador = null;
         boolean bandera = false;
         int i = 0;
         while (i < clientes.size() && !bandera) {
-            if (clientes.get(i).getRutComprador() == rut) {
+            if (clientes.get(i).getRutComprador().equals(rut)) {
                 comprador = clientes.get(i);
                 bandera = true;
             }
@@ -193,7 +193,7 @@ public class ControladorSupermercado {
         }
 
         System.out.print("Ingrese ID del producto: ");
-        String idProducto = scanner.nextLine().intern();
+        String idProducto = scanner.nextLine();
         Producto producto = inv.buscarProductoPorId(idProducto);
 
         if (producto == null) {
