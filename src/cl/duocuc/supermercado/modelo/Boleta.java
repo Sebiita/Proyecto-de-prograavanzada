@@ -17,6 +17,14 @@ public class Boleta implements Serializable {
     private CategoriaOferta categoriaOferta;
 
     public Boleta(String idBoleta, Comprador comprador, CategoriaOferta categoriaOferta) {
+        // [REQUISITO: Excepciones]
+        if (idBoleta == null || idBoleta.isEmpty()) {
+            throw new IllegalArgumentException("El ID de la boleta no puede ser vacío.");
+        }
+        if (categoriaOferta == null) {
+            throw new IllegalArgumentException("La categoría de oferta es obligatoria.");
+        }
+
         this.idBoleta = idBoleta;
         this.comprador = comprador;
         this.categoriaOferta = categoriaOferta;

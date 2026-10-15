@@ -19,6 +19,23 @@ public abstract class Producto implements Rankeable, Serializable {
 
     public Producto(String idProducto, String denominacion, double valorBase,
                     int stock, Medida unidad) {
+        // [REQUISITO: Excepciones]
+        if (idProducto == null || idProducto.isEmpty()) {
+            throw new IllegalArgumentException("El ID del producto no puede ser vacío.");
+        }
+        if (denominacion == null || denominacion.isEmpty()) {
+            throw new IllegalArgumentException("La denominación del producto no puede ser vacía.");
+        }
+        if (valorBase < 0) {
+            throw new IllegalArgumentException("El valor base no puede ser negativo.");
+        }
+        if (stock < 0) {
+            throw new IllegalArgumentException("El stock no puede ser negativo.");
+        }
+        if (unidad == null) {
+            throw new IllegalArgumentException("La unidad de medida es obligatoria.");
+        }
+
         this.idProducto = idProducto;
         this.denominacion = denominacion;
         this.valorBase = valorBase;

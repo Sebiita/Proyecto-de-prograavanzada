@@ -2,6 +2,9 @@ package cl.duocuc.supermercado.sistema;
 
 import cl.duocuc.supermercado.enums.CategoriaOferta;
 import cl.duocuc.supermercado.enums.Medida;
+import cl.duocuc.supermercado.excepciones.CompradorNoEncontradoException;
+import cl.duocuc.supermercado.excepciones.ProductoNoEncontradoException;
+import cl.duocuc.supermercado.excepciones.StockInsuficienteException;
 import cl.duocuc.supermercado.modelo.Boleta;
 import cl.duocuc.supermercado.modelo.Comprador;
 import cl.duocuc.supermercado.modelo.Inventario;
@@ -17,6 +20,10 @@ import java.util.Scanner;
 // [REQUISITO: Menu - Scanner]
 
 public class ControladorSupermercado {
+
+    // [REQUISITO: Static y Final]
+    private static final String NOMBRE_SISTEMA = "SUPERMERCADO";
+    private static final double PORCENTAJE_REBAJA = 0.10;
 
     private Inventario inv;
     private ArrayList<Comprador> clientes;
@@ -55,15 +62,14 @@ public class ControladorSupermercado {
 
         int opcion;
         do {
-            System.out.println("\n===== SUPERMERCADO =====");
+            // [REQUISITO: Static y Final]
+            System.out.println("\n===== " + NOMBRE_SISTEMA + " =====");
             System.out.println("1. Agregar producto");
             System.out.println("2. Listar productos");
             System.out.println("3. Agregar comprador");
             System.out.println("4. Listar compradores");
             System.out.println("5. Realizar venta");
             System.out.println("6. Ver boletas");
-            System.out.println("7. Guardar datos");
-            System.out.println("8. Cargar datos");
             System.out.println("9. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
@@ -83,18 +89,18 @@ public class ControladorSupermercado {
                     listarCompradores();
                     break;
                 case 5:
-                    realizarVenta();
+                    try {
+                        realizarVenta();
+                    } catch (CompradorNoEncontradoException | ProductoNoEncontradoException | StockInsuficienteException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
                 case 6:
                     verBoletas();
                     break;
-                case 7:
-                    guardador.guardarDatos();
-                    break;
-                case 8:
-                    guardador.cargarDatos();
-                    break;
                 case 9:
+                    // [REQUISITO: Persistencia]
+                    guardador.guardarDatos();
                     System.out.println("Saliendo del sistema...");
                     break;
                 default:
@@ -188,8 +194,8 @@ public class ControladorSupermercado {
         }
 
         if (comprador == null) {
-            System.out.println("Error: No se encontro comprador con RUT: " + rut);
-            return;
+            // [REQUISITO: Excepciones]
+            throw new CompradorNoEncontradoException("No se encontró comprador con RUT: " + rut);
         }
 
         System.out.print("Ingrese ID del producto: ");
@@ -197,8 +203,8 @@ public class ControladorSupermercado {
         Producto producto = inv.buscarProductoPorId(idProducto);
 
         if (producto == null) {
-            System.out.println("Error: El producto con ID " + idProducto + " no existe en el inventario.");
-            return;
+            // [REQUISITO: Excepciones]
+            throw new ProductoNoEncontradoException("El producto con ID " + idProducto + " no existe en el inventario.");
         }
 
         System.out.print("Ingrese cantidad: ");
@@ -206,8 +212,8 @@ public class ControladorSupermercado {
         scanner.nextLine();
 
         if (cantidad > producto.getStock()) {
-            System.out.println("Error: Stock insuficiente. Disponible: " + producto.getStock());
-            return;
+            // [REQUISITO: Excepciones]
+            throw new StockInsuficienteException(producto.getStock(), cantidad);
         }
 
         Boleta boleta = new Boleta("B" + (boletas.size() + 1), comprador, CategoriaOferta.REBAJA_PORCENTUAL);
@@ -225,9 +231,15 @@ public class ControladorSupermercado {
         }
         int i = 0;
         while (i < boletas.size()) {
-            System.out.println(boletas.get(i));
+            // [REQUISITO: Static y Final]
+            System.out.println(boletas.get(i) + " | Formateado: " + formatearPrecio(boletas.get(i).getTotalPagar()));
             i = i + 1;
         }
+    }
+
+    // [REQUISITO: Static y Final]
+    public static String formatearPrecio(double precio) {
+        return "$" + String.format("%.2f", precio);
     }
 
     // Getters y Setters

@@ -15,6 +15,14 @@ public class Comprador implements Rankeable, Serializable {
     private ArrayList<Boleta> historialBoletas;
 
     public Comprador(String rutComprador, String alias) {
+        // [REQUISITO: Excepciones]
+        if (rutComprador == null || rutComprador.isEmpty()) {
+            throw new IllegalArgumentException("El RUT del comprador no puede ser vacío.");
+        }
+        if (alias == null || alias.isEmpty()) {
+            throw new IllegalArgumentException("El alias del comprador no puede ser vacío.");
+        }
+
         this.rutComprador = rutComprador;
         this.alias = alias;
         this.historialBoletas = new ArrayList<>();

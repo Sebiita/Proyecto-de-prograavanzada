@@ -43,9 +43,14 @@ public class GuardadoSeguro implements Registrable {
     @Override
     @SuppressWarnings("unchecked")
     public void cargarDatos() {
+        // [REQUISITO: Persistencia]
         File archivo = new File(RUTA_DATOS);
         if (!archivo.exists()) {
             System.out.println("No existe archivo de datos previo. Se inicia con datos vacios.");
+            return;
+        }
+        if (archivo.length() == 0) {
+            System.out.println("El archivo de datos está vacío. Se inicia con datos vacios.");
             return;
         }
 
