@@ -9,6 +9,9 @@ public class Verdura extends Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // [REQUISITO: Static y Final]
+    private static final double RECARGO_ORGANICO = 1.20;
+
     private boolean esOrganica;
 
     public Verdura(String idProducto, String denominacion, double valorBase,
@@ -19,13 +22,11 @@ public class Verdura extends Producto implements Serializable {
 
     @Override
     public double calcularPrecio() {
-        double precioFinal;
+        // [REQUISITO: Static y Final]
         if (esOrganica) {
-            precioFinal = valorBase * 1.20;
-        } else {
-            precioFinal = valorBase;
+            return valorBase * RECARGO_ORGANICO;
         }
-        return precioFinal;
+        return valorBase;
     }
 
     public boolean isEsOrganica() { return esOrganica; }

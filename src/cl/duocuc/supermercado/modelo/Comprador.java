@@ -1,5 +1,6 @@
 package cl.duocuc.supermercado.modelo;
 
+import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
 import cl.duocuc.supermercado.interfaces.Rankeable;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,16 +17,26 @@ public class Comprador implements Rankeable, Serializable {
 
     public Comprador(String rutComprador, String alias) {
         // [REQUISITO: Excepciones]
-        if (rutComprador == null || rutComprador.isEmpty()) {
-            throw new IllegalArgumentException("El RUT del comprador no puede ser vacío.");
-        }
-        if (alias == null || alias.isEmpty()) {
-            throw new IllegalArgumentException("El alias del comprador no puede ser vacío.");
-        }
+        validarRutComprador(rutComprador);
+        validarAlias(alias);
 
         this.rutComprador = rutComprador;
         this.alias = alias;
         this.historialBoletas = new ArrayList<>();
+    }
+
+    // [REQUISITO: Static y Final]
+    private static void validarRutComprador(String rutComprador) {
+        if (rutComprador == null || rutComprador.isEmpty()) {
+            throw new DatoInvalidoException("El RUT del comprador no puede ser vacío.");
+        }
+    }
+
+    // [REQUISITO: Static y Final]
+    private static void validarAlias(String alias) {
+        if (alias == null || alias.isEmpty()) {
+            throw new DatoInvalidoException("El alias del comprador no puede ser vacío.");
+        }
     }
 
     public void agregarBoleta(Boleta b) {
@@ -52,11 +63,22 @@ public class Comprador implements Rankeable, Serializable {
 
     // Getters y Setters
     public String getRutComprador() { return rutComprador; }
-    public void setRutComprador(String rutComprador) { this.rutComprador = rutComprador; }
+    public void setRutComprador(String rutComprador) {
+        validarRutComprador(rutComprador);
+        this.rutComprador = rutComprador;
+    }
 
     public String getAlias() { return alias; }
-    public void setAlias(String alias) { this.alias = alias; }
+    public void setAlias(String alias) {
+        validarAlias(alias);
+        this.alias = alias;
+    }
 
     public ArrayList<Boleta> getHistorialBoletas() { return historialBoletas; }
-    public void setHistorialBoletas(ArrayList<Boleta> historialBoletas) { this.historialBoletas = historialBoletas; }
+    public void setHistorialBoletas(ArrayList<Boleta> historialBoletas) {
+        if (historialBoletas == null) {
+            throw new DatoInvalidoException("El historial de boletas no puede ser nulo.");
+        }
+        this.historialBoletas = historialBoletas;
+    }
 }

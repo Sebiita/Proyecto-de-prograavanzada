@@ -1,6 +1,7 @@
 package cl.duocuc.supermercado.modelo;
 
 import cl.duocuc.supermercado.enums.CategoriaOferta;
+import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -9,6 +10,10 @@ import java.util.ArrayList;
 public class Boleta implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    // [REQUISITO: Static y Final]
+    private static final double REBAJA_PORCENTUAL = 0.10;
+    private static final double DESCUENTO_DOS_POR_UNO = 0.50;
 
     private String idBoleta;
     private Comprador comprador;
@@ -19,10 +24,10 @@ public class Boleta implements Serializable {
     public Boleta(String idBoleta, Comprador comprador, CategoriaOferta categoriaOferta) {
         // [REQUISITO: Excepciones]
         if (idBoleta == null || idBoleta.isEmpty()) {
-            throw new IllegalArgumentException("El ID de la boleta no puede ser vacío.");
+            throw new DatoInvalidoException("El ID de la boleta no puede ser vacío.");
         }
         if (categoriaOferta == null) {
-            throw new IllegalArgumentException("La categoría de oferta es obligatoria.");
+            throw new DatoInvalidoException("La categoría de oferta es obligatoria.");
         }
 
         this.idBoleta = idBoleta;
@@ -33,6 +38,13 @@ public class Boleta implements Serializable {
     }
 
     public void agregarProducto(Producto producto, int cantidad) {
+        // [REQUISITO: Excepciones]
+        if (producto == null) {
+            throw new DatoInvalidoException("El producto a agregar no puede ser nulo.");
+        }
+        if (cantidad <= 0) {
+            throw new DatoInvalidoException("La cantidad debe ser mayor a cero.");
+        }
         int i = 0;
         while (i < cantidad) {
             listaCompra.add(producto);
@@ -41,6 +53,11 @@ public class Boleta implements Serializable {
     }
 
     public void procesarPago() {
+        // [REQUISITO: Excepciones]
+        if (listaCompra.isEmpty()) {
+            throw new DatoInvalidoException("No se puede procesar una boleta sin productos.");
+        }
+
         double suma = 0;
         int i = 0;
         while (i < listaCompra.size()) {
@@ -50,9 +67,11 @@ public class Boleta implements Serializable {
 
         double rebaja = 0;
         if (categoriaOferta == CategoriaOferta.REBAJA_PORCENTUAL) {
-            rebaja = suma * 0.10;
+            rebaja = suma * REBAJA_PORCENTUAL;
         } else if (categoriaOferta == CategoriaOferta.DOS_POR_UNO) {
-            rebaja = (listaCompra.size() / 2) * (suma / listaCompra.size());
+            int pares = listaCompra.size() / 2;
+            double precioUnitarioPromedio = suma / listaCompra.size();
+            rebaja = pares * precioUnitarioPromedio * DESCUENTO_DOS_POR_UNO;
         }
 
         this.totalPagar = suma - rebaja;

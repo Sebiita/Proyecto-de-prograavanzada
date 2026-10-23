@@ -9,6 +9,9 @@ public class Lacteo extends Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // [REQUISITO: Static y Final]
+    private static final double RECARGO_FRIO = 1.15;
+
     private boolean requiereFrio;
 
     public Lacteo(String idProducto, String denominacion, double valorBase,
@@ -19,13 +22,11 @@ public class Lacteo extends Producto implements Serializable {
 
     @Override
     public double calcularPrecio() {
-        double precioFinal;
+        // [REQUISITO: Static y Final]
         if (requiereFrio) {
-            precioFinal = valorBase * 1.15;
-        } else {
-            precioFinal = valorBase;
+            return valorBase * RECARGO_FRIO;
         }
-        return precioFinal;
+        return valorBase;
     }
 
     public boolean isRequiereFrio() { return requiereFrio; }

@@ -9,6 +9,10 @@ public class Limpieza extends Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // [REQUISITO: Static y Final]
+    private static final double IMPUESTO_TOXICO = 1.10;
+    private static final double DESCUENTO_NO_TOXICO = 0.95;
+
     private boolean esToxico;
 
     public Limpieza(String idProducto, String denominacion, double valorBase,
@@ -19,13 +23,11 @@ public class Limpieza extends Producto implements Serializable {
 
     @Override
     public double calcularPrecio() {
-        double precioFinal;
+        // [REQUISITO: Static y Final]
         if (esToxico) {
-            precioFinal = valorBase * 1.10;
-        } else {
-            precioFinal = valorBase * 0.95;
+            return valorBase * IMPUESTO_TOXICO;
         }
-        return precioFinal;
+        return valorBase * DESCUENTO_NO_TOXICO;
     }
 
     public boolean isEsToxico() { return esToxico; }
