@@ -59,6 +59,10 @@ public class GuardadoSeguro implements Registrable {
             ctrl.setListaCompradores((ArrayList<Comprador>) ois.readObject());
             ctrl.setRegistroBoletas((ArrayList<Boleta>) ois.readObject());
 
+            // [REQUISITO: Static y Final]
+            // Evita que los contadores estáticos generen IDs duplicados tras cargar datos previos
+            ctrl.sincronizarContadores();
+
             System.out.println("Datos cargados exitosamente desde: " + RUTA_DATOS);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al cargar los datos: " + e.getMessage());

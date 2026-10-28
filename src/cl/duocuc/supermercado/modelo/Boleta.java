@@ -2,6 +2,7 @@ package cl.duocuc.supermercado.modelo;
 
 import cl.duocuc.supermercado.enums.CategoriaOferta;
 import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
+import cl.duocuc.supermercado.util.Validador;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -23,12 +24,8 @@ public class Boleta implements Serializable {
 
     public Boleta(String idBoleta, Comprador comprador, CategoriaOferta categoriaOferta) {
         // [REQUISITO: Excepciones]
-        if (idBoleta == null || idBoleta.isEmpty()) {
-            throw new DatoInvalidoException("El ID de la boleta no puede ser vacío.");
-        }
-        if (categoriaOferta == null) {
-            throw new DatoInvalidoException("La categoría de oferta es obligatoria.");
-        }
+        Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");
+        Validador.validarNoNulo(categoriaOferta, "La categoría de oferta es obligatoria.");
 
         this.idBoleta = idBoleta;
         this.comprador = comprador;
@@ -39,9 +36,7 @@ public class Boleta implements Serializable {
 
     public void agregarProducto(Producto producto, int cantidad) {
         // [REQUISITO: Excepciones]
-        if (producto == null) {
-            throw new DatoInvalidoException("El producto a agregar no puede ser nulo.");
-        }
+        Validador.validarNoNulo(producto, "El producto a agregar no puede ser nulo.");
         if (cantidad <= 0) {
             throw new DatoInvalidoException("La cantidad debe ser mayor a cero.");
         }
@@ -100,7 +95,10 @@ public class Boleta implements Serializable {
 
     // Getters y Setters
     public String getIdBoleta() { return idBoleta; }
-    public void setIdBoleta(String idBoleta) { this.idBoleta = idBoleta; }
+    public void setIdBoleta(String idBoleta) {
+        Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");
+        this.idBoleta = idBoleta;
+    }
 
     public Comprador getComprador() { return comprador; }
     public void setComprador(Comprador comprador) { this.comprador = comprador; }
