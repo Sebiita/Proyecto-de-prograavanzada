@@ -109,46 +109,29 @@ public class ControladorSupermercado {
     }
 
     //REQUISITO: Static y Final
-    //Sincroniza los contadores estáticos con los datos cargados para evitar IDs duplicados
-    public void sincronizarContadores() {
-        contadorProductos = Math.max(contadorProductos, extraerMaximoNumero(inv.getMapaProductos().keySet(), PREFIJO_PRODUCTO) + 1);
-
-        int maxBoleta = 0;
-        int i = 0;
-        while (i < boletas.size()) {
-            maxBoleta = Math.max(maxBoleta, extraerNumero(boletas.get(i).getIdBoleta(), PREFIJO_BOLETA));
-            i = i + 1;
-        }
-        contadorBoletas = Math.max(contadorBoletas, maxBoleta + 1);
-
-        int maxComprador = 0;
-        i = 0;
-        while (i < clientes.size()) {
-            maxComprador = Math.max(maxComprador, extraerNumero(clientes.get(i).getIdComprador(), PREFIJO_COMPRADOR));
-            i = i + 1;
-        }
-        contadorCompradores = Math.max(contadorCompradores, maxComprador + 1);
+    //Getters y setters para que GuardadoSeguro persista los contadores en un archivo de texto
+    public static int getContadorProductos() {
+        return contadorProductos;
     }
 
-    private static int extraerMaximoNumero(Iterable<String> ids, String prefijo) {
-        int maximo = 0;
-        java.util.Iterator<String> it = ids.iterator();
-        while (it.hasNext()) {
-            maximo = Math.max(maximo, extraerNumero(it.next(), prefijo));
-        }
-        return maximo;
+    public static void setContadorProductos(int contadorProductos) {
+        ControladorSupermercado.contadorProductos = contadorProductos;
     }
 
+    public static int getContadorBoletas() {
+        return contadorBoletas;
+    }
 
-    private static int extraerNumero(String id, String prefijo) {
-        if (id != null && id.startsWith(prefijo)) {
-            try {
-                return Integer.parseInt(id.substring(prefijo.length()));
-            } catch (NumberFormatException e) {
-                return 0;
-            }
-        }
-        return 0;
+    public static void setContadorBoletas(int contadorBoletas) {
+        ControladorSupermercado.contadorBoletas = contadorBoletas;
+    }
+
+    public static int getContadorCompradores() {
+        return contadorCompradores;
+    }
+
+    public static void setContadorCompradores(int contadorCompradores) {
+        ControladorSupermercado.contadorCompradores = contadorCompradores;
     }
 
     public void precargarDatos() {
