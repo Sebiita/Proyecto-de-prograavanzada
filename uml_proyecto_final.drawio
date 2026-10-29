@@ -12,46 +12,64 @@
           <mxGeometry y="26" width="220" height="44" as="geometry"/>
         </mxCell>
         <mxCell id="registrable" value="&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Registrable&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="140" width="220" height="90" as="geometry"/>
+          <mxGeometry x="40" y="130" width="220" height="90" as="geometry"/>
         </mxCell>
         <mxCell id="registrable_met" value="+ guardarDatos(): void&lt;br&gt;+ cargarDatos(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="registrable">
           <mxGeometry y="26" width="220" height="64" as="geometry"/>
         </mxCell>
         <mxCell id="medida" value="&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Medida&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="260" width="220" height="110" as="geometry"/>
+          <mxGeometry x="40" y="240" width="220" height="110" as="geometry"/>
         </mxCell>
         <mxCell id="medida_met" value="KILOGRAMO&lt;br&gt;LITRO&lt;br&gt;UNIDAD" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="medida">
           <mxGeometry y="26" width="220" height="84" as="geometry"/>
         </mxCell>
         <mxCell id="categoriaoferta" value="&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;CategoriaOferta&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="400" width="220" height="90" as="geometry"/>
+          <mxGeometry x="40" y="370" width="220" height="90" as="geometry"/>
         </mxCell>
         <mxCell id="categoriaoferta_met" value="DOS_POR_UNO&lt;br&gt;REBAJA_PORCENTUAL" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="categoriaoferta">
           <mxGeometry y="26" width="220" height="64" as="geometry"/>
         </mxCell>
         <mxCell id="exc_dato" value="&lt;b&gt;DatoInvalidoException&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="530" width="220" height="70" as="geometry"/>
+          <mxGeometry x="40" y="570" width="220" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="exc_dato_met" value="+ DatoInvalidoException(String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="exc_dato">
           <mxGeometry y="26" width="220" height="44" as="geometry"/>
         </mxCell>
         <mxCell id="exc_comp" value="&lt;b&gt;CompradorNoEncontradoException&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="620" width="220" height="70" as="geometry"/>
+          <mxGeometry x="40" y="660" width="220" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="exc_comp_met" value="+ CompradorNoEncontradoException(String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="exc_comp">
           <mxGeometry y="26" width="220" height="44" as="geometry"/>
         </mxCell>
         <mxCell id="exc_prod" value="&lt;b&gt;ProductoNoEncontradoException&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="710" width="220" height="70" as="geometry"/>
+          <mxGeometry x="40" y="750" width="220" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="exc_prod_met" value="+ ProductoNoEncontradoException(String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="exc_prod">
           <mxGeometry y="26" width="220" height="44" as="geometry"/>
         </mxCell>
         <mxCell id="exc_stock" value="&lt;b&gt;StockInsuficienteException&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="40" y="800" width="220" height="70" as="geometry"/>
+          <mxGeometry x="40" y="840" width="220" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="exc_stock_met" value="+ StockInsuficienteException(int, int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="exc_stock">
           <mxGeometry y="26" width="220" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="runtimeexc" value="&amp;lt;&amp;lt;external&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;RuntimeException&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="480" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="runtimeexc_met" value="(clase del JDK)" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="runtimeexc">
+          <mxGeometry y="26" width="220" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="gen_dato" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="exc_dato" target="runtimeexc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gen_comp" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="exc_comp" target="runtimeexc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gen_prod" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="exc_prod" target="runtimeexc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gen_stock" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="exc_stock" target="runtimeexc">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="producto" value="&lt;i&gt;Producto&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="320" y="40" width="300" height="240" as="geometry"/>
@@ -150,7 +168,7 @@
           <mxGeometry y="60" width="300" height="80" as="geometry"/>
         </mxCell>
         <mxCell id="controlador" value="&lt;b&gt;ControladorSupermercado&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="40" width="380" height="520" as="geometry"/>
+          <mxGeometry x="1060" y="40" width="380" height="620" as="geometry"/>
         </mxCell>
         <mxCell id="controlador_attr" value="&lt;u&gt;- NOMBRE_SISTEMA: String {static, final}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- PRECIO_MINIMO_PRODUCTO: double {static, final}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- PREFIJO_PRODUCTO: String {static, final}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- PREFIJO_BOLETA: String {static, final}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- PREFIJO_COMPRADOR: String {static, final}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- contadorProductos: int {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- contadorBoletas: int {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- contadorCompradores: int {static}&lt;/u&gt;&lt;br&gt;- inv: Inventario&lt;br&gt;- clientes: ArrayList&amp;lt;Comprador&amp;gt;&lt;br&gt;- boletas: ArrayList&amp;lt;Boleta&amp;gt;&lt;br&gt;- scanner: Scanner&lt;br&gt;- guardador: GuardadoSeguro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="controlador">
           <mxGeometry y="26" width="380" height="338" as="geometry"/>
@@ -158,23 +176,23 @@
         <mxCell id="controlador_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="controlador">
           <mxGeometry y="364" width="380" height="8" as="geometry"/>
         </mxCell>
-        <mxCell id="controlador_met" value="+ ControladorSupermercado()&lt;br&gt;+ precargarDatos(): void&lt;br&gt;+ iniciarMenu(): void&lt;br&gt;+ sincronizarContadores(): void&lt;br&gt;+ getGuardador(): GuardadoSeguro&lt;br&gt;&lt;u&gt;+ generarIdProducto(): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ generarIdBoleta(): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ generarIdComprador(): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ formatearPrecio(precio: double): String {static}&lt;/u&gt;&lt;br&gt;- agregarProducto(): void&lt;br&gt;- listarProductos(): void&lt;br&gt;- buscarProducto(): void&lt;br&gt;- agregarComprador(): void&lt;br&gt;- listarCompradores(): void&lt;br&gt;- verPerfilComprador(): void&lt;br&gt;- realizarVenta(): void&lt;br&gt;- verBoletas(): void&lt;br&gt;- rankingProductos(): void&lt;br&gt;- rankingCompradores(): void&lt;br&gt;- ordenarProductos(): void&lt;br&gt;- crearBoletaPrecargada(...): void&lt;br&gt;- buscarCompradorPorRut(rut: String): Comprador&lt;br&gt;- obtenerTipoProducto(p: Producto): String&lt;br&gt;- leerEntero(mensaje: String): int&lt;br&gt;- leerDouble(mensaje: String): double&lt;br&gt;+ getters/setters" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="controlador">
+        <mxCell id="controlador_met" value="+ ControladorSupermercado()&lt;br&gt;+ precargarDatos(): void&lt;br&gt;+ iniciarMenu(): void&lt;br&gt;+ getGuardador(): GuardadoSeguro&lt;br&gt;&lt;u&gt;+ generarIdProducto(): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ generarIdBoleta(): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ generarIdComprador(): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ formatearPrecio(precio: double): String {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ getContadorProductos(): int {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ setContadorProductos(int): void {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ getContadorBoletas(): int {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ setContadorBoletas(int): void {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ getContadorCompradores(): int {static}&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ setContadorCompradores(int): void {static}&lt;/u&gt;&lt;br&gt;- agregarProducto(): void&lt;br&gt;- listarProductos(): void&lt;br&gt;- buscarProducto(): void&lt;br&gt;- agregarComprador(): void&lt;br&gt;- listarCompradores(): void&lt;br&gt;- verPerfilComprador(): void&lt;br&gt;- realizarVenta(): void&lt;br&gt;- verBoletas(): void&lt;br&gt;- rankingProductos(): void&lt;br&gt;- rankingCompradores(): void&lt;br&gt;- ordenarProductos(): void&lt;br&gt;- crearBoletaPrecargada(...): void&lt;br&gt;- buscarCompradorPorRut(rut: String): Comprador&lt;br&gt;- obtenerTipoProducto(p: Producto): String&lt;br&gt;- leerEntero(mensaje: String): int&lt;br&gt;- leerDouble(mensaje: String): double&lt;br&gt;+ getters/setters" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="controlador">
           <mxGeometry y="372" width="380" height="148" as="geometry"/>
         </mxCell>
         <mxCell id="guardadoseguro" value="&lt;b&gt;GuardadoSeguro&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="600" width="340" height="140" as="geometry"/>
+          <mxGeometry x="1060" y="700" width="340" height="200" as="geometry"/>
         </mxCell>
-        <mxCell id="guardadoseguro_attr" value="&lt;u&gt;- RUTA_DATOS: String {static, final}&lt;/u&gt;&lt;br&gt;- ctrl: ControladorSupermercado" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="guardadoseguro">
-          <mxGeometry y="26" width="340" height="52" as="geometry"/>
+        <mxCell id="guardadoseguro_attr" value="&lt;u&gt;- RUTA_DATOS: String {static, final}&lt;/u&gt;&lt;br&gt;&lt;u&gt;- RUTA_CONTADORES: String {static, final}&lt;/u&gt;&lt;br&gt;- ctrl: ControladorSupermercado" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="guardadoseguro">
+          <mxGeometry y="26" width="340" height="78" as="geometry"/>
         </mxCell>
         <mxCell id="guardadoseguro_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="guardadoseguro">
-          <mxGeometry y="78" width="340" height="8" as="geometry"/>
+          <mxGeometry y="104" width="340" height="8" as="geometry"/>
         </mxCell>
-        <mxCell id="guardadoseguro_met" value="+ GuardadoSeguro(ctrl: ControladorSupermercado)&lt;br&gt;+ guardarDatos(): void&lt;br&gt;+ cargarDatos(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="guardadoseguro">
-          <mxGeometry y="86" width="340" height="54" as="geometry"/>
+        <mxCell id="guardadoseguro_met" value="+ GuardadoSeguro(ctrl: ControladorSupermercado)&lt;br&gt;+ guardarDatos(): void&lt;br&gt;+ cargarDatos(): void&lt;br&gt;- guardarContadores(): void&lt;br&gt;- cargarContadores(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="guardadoseguro">
+          <mxGeometry y="112" width="340" height="88" as="geometry"/>
         </mxCell>
         <mxCell id="main" value="&lt;b&gt;Main&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="780" width="240" height="80" as="geometry"/>
+          <mxGeometry x="1060" y="920" width="240" height="80" as="geometry"/>
         </mxCell>
         <mxCell id="main_met" value="+ main(args: String[]): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="main">
           <mxGeometry y="26" width="240" height="54" as="geometry"/>
