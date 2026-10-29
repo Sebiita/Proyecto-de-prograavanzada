@@ -467,24 +467,20 @@ public class ControladorSupermercado {
 
     private void ordenarProductos() {
         System.out.println("\n--- Ordenar productos ---");
-        System.out.println("1. Por nombre");
-        System.out.println("2. Por precio final");
-        System.out.println("3. Por stock");
-        System.out.println("4. Por tipo");
+        System.out.println("1. Por precio final");
+        System.out.println("2. Por stock");
+        System.out.println("3. Por tipo");
         int criterio = leerEntero("Seleccione criterio: ");
 
         ArrayList<Producto> lista = new ArrayList<>(inv.getMapaProductos().values());
         switch (criterio) {
             case 1:
-                lista.sort(Comparator.comparing(p -> p.getDenominacion().toLowerCase()));
-                break;
-            case 2:
                 lista.sort(Comparator.comparingDouble(Producto::calcularPrecio));
                 break;
-            case 3:
+            case 2:
                 lista.sort(Comparator.comparingInt(Producto::getStock));
                 break;
-            case 4:
+            case 3:
                 lista.sort(Comparator.comparing(this::obtenerTipoProducto));
                 break;
             default:
