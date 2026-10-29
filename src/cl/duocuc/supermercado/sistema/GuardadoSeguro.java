@@ -12,8 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-// [REQUISITO: Interface]
-// [REQUISITO: Persistencia]
+//REQUISITO: Interface
+//REQUISITO: Persistencia
 
 public class GuardadoSeguro implements Registrable {
 
@@ -43,7 +43,7 @@ public class GuardadoSeguro implements Registrable {
     @Override
     @SuppressWarnings("unchecked")
     public void cargarDatos() {
-        // [REQUISITO: Persistencia]
+        //REQUISITO: Persistencia
         File archivo = new File(RUTA_DATOS);
         if (!archivo.exists()) {
             System.out.println("No existe archivo de datos previo. Se inicia con datos vacios.");
@@ -58,9 +58,6 @@ public class GuardadoSeguro implements Registrable {
             ctrl.setInventarioTienda((Inventario) ois.readObject());
             ctrl.setListaCompradores((ArrayList<Comprador>) ois.readObject());
             ctrl.setRegistroBoletas((ArrayList<Boleta>) ois.readObject());
-
-            // [REQUISITO: Static y Final]
-            // Evita que los contadores estáticos generen IDs duplicados tras cargar datos previos
             ctrl.sincronizarContadores();
 
             System.out.println("Datos cargados exitosamente desde: " + RUTA_DATOS);

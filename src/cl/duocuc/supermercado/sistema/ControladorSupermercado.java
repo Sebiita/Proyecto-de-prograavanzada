@@ -17,20 +17,19 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
-// [REQUISITO: Package]
-// [REQUISITO: Colecciones]
-// [REQUISITO: Menu - Scanner]
+//REQUISITO: Colecciones
+//REQUISITO: Menu - Scanner
 
 public class ControladorSupermercado {
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static y Final
     private static final String NOMBRE_SISTEMA = "SUPERMERCADO";
     private static final double PRECIO_MINIMO_PRODUCTO = 1.0;
     private static final String PREFIJO_PRODUCTO = "PROD-";
     private static final String PREFIJO_BOLETA = "BOL-";
     private static final String PREFIJO_COMPRADOR = "CLI-";
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static y Final
     private static int contadorProductos = 1;
     private static int contadorBoletas = 1;
     private static int contadorCompradores = 1;
@@ -56,23 +55,23 @@ public class ControladorSupermercado {
         return guardador;
     }
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static y Final
     public static String generarIdProducto() {
         return PREFIJO_PRODUCTO + String.format("%03d", contadorProductos++);
     }
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static y Final
     public static String generarIdBoleta() {
         return PREFIJO_BOLETA + String.format("%03d", contadorBoletas++);
     }
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static y Final
     public static String generarIdComprador() {
         return PREFIJO_COMPRADOR + String.format("%03d", contadorCompradores++);
     }
 
-    // [REQUISITO: Excepciones]
-    // Lectura robusta de enteros usando nextLine() para evitar datos residuales en el buffer
+    //REQUISITO: Excepciones
+    //Lectura robusta de enteros usando nextLine() para evitar datos residuales
     private int leerEntero(String mensaje) {
         while (true) {
             try {
@@ -84,8 +83,8 @@ public class ControladorSupermercado {
         }
     }
 
-    // [REQUISITO: Excepciones]
-    // Lectura robusta de decimales usando nextLine() para evitar datos residuales en el buffer
+    //REQUISITO: Excepciones
+    //Lectura robusta de decimales usando nextLine() para evitar datos residuales
     private double leerDouble(String mensaje) {
         while (true) {
             try {
@@ -97,7 +96,7 @@ public class ControladorSupermercado {
         }
     }
 
-    // Refactorización: evita duplicar la búsqueda de comprador por RUT
+    //evita duplicar la búsqueda de comprador por RUT
     private Comprador buscarCompradorPorRut(String rut) {
         int i = 0;
         while (i < clientes.size()) {
@@ -109,8 +108,8 @@ public class ControladorSupermercado {
         return null;
     }
 
-    // [REQUISITO: Static y Final]
-    // Sincroniza los contadores estáticos con los datos cargados para evitar IDs duplicados
+    //REQUISITO: Static y Final
+    //Sincroniza los contadores estáticos con los datos cargados para evitar IDs duplicados
     public void sincronizarContadores() {
         contadorProductos = Math.max(contadorProductos, extraerMaximoNumero(inv.getMapaProductos().keySet(), PREFIJO_PRODUCTO) + 1);
 
@@ -153,9 +152,9 @@ public class ControladorSupermercado {
     }
 
     public void precargarDatos() {
-        // [REQUISITO: Colecciones]
-        // [REQUISITO: Herencia]
-        // Mínimo 3 instancias de cada subtipo de producto
+        //REQUISITO: Colecciones
+        //REQUISITO: Herencia
+        //instancias de cada subtipo de producto
         Producto p1 = new Lacteo(generarIdProducto(), "Leche Entera", 1200, 20, Medida.LITRO, true);
         Producto p2 = new Lacteo(generarIdProducto(), "Yogur Natural", 800, 15, Medida.UNIDAD, true);
         Producto p7 = new Lacteo(generarIdProducto(), "Queso Fresco", 3500, 10, Medida.KILOGRAMO, true);
@@ -176,7 +175,7 @@ public class ControladorSupermercado {
         inv.agregarProducto(p8);
         inv.agregarProducto(p9);
 
-        // Al menos 5 clientes
+        //clientes
         Comprador c1 = new Comprador(generarIdComprador(), "12345678-9", "Seba ruiz");
         Comprador c2 = new Comprador(generarIdComprador(), "98765432-1", "Cristian ruiz");
         Comprador c3 = new Comprador(generarIdComprador(), "11111111-1", "Santiago Farfan");
@@ -188,7 +187,7 @@ public class ControladorSupermercado {
         clientes.add(c4);
         clientes.add(c5);
 
-        // Al menos 8 operaciones registradas en el historial
+        //operaciones registradas en el historial
         crearBoletaPrecargada(c1, CategoriaOferta.REBAJA_PORCENTUAL, p1, 2);
         crearBoletaPrecargada(c2, CategoriaOferta.DOS_POR_UNO, p3, 4);
         crearBoletaPrecargada(c3, CategoriaOferta.REBAJA_PORCENTUAL, p5, 1);
@@ -212,14 +211,13 @@ public class ControladorSupermercado {
     }
 
     public void iniciarMenu() {
-        // [REQUISITO: Menu - Scanner]
+        //REQUISITO: Menu - Scanner
         if (scanner == null) {
             scanner = new Scanner(System.in);
         }
 
         int opcion;
         do {
-            // [REQUISITO: Static y Final]
             System.out.println("\n===== " + NOMBRE_SISTEMA + " =====");
             System.out.println("1. Agregar producto");
             System.out.println("2. Listar productos");
@@ -271,7 +269,7 @@ public class ControladorSupermercado {
                         ordenarProductos();
                         break;
                     case 12:
-                        // [REQUISITO: Persistencia]
+                        //REQUISITO: Persistencia
                         getGuardador().guardarDatos();
                         System.out.println("Saliendo del sistema...");
                         break;
@@ -280,20 +278,20 @@ public class ControladorSupermercado {
                 }
             } catch (CompradorNoEncontradoException | ProductoNoEncontradoException
                      | StockInsuficienteException | DatoInvalidoException e) {
-                // [REQUISITO: Excepciones]
+                //REQUISITO: Excepciones
                 System.out.println("Error: " + e.getMessage());
             }
         } while (opcion != 12);
     }
 
     private void agregarProducto() {
-        // [REQUISITO: Static y Final]
+        //REQUISITO: Static y Final
         String id = generarIdProducto();
         System.out.println("ID asignado automáticamente: " + id);
         System.out.print("Ingrese denominación: ");
         String denominacion = scanner.nextLine();
         double valorBase = leerDouble("Ingrese valor base: ");
-        // [REQUISITO: Static y Final]
+        //REQUISITO: Static y Final
         if (valorBase < PRECIO_MINIMO_PRODUCTO) {
             throw new DatoInvalidoException("El valor base debe ser al menos $" + PRECIO_MINIMO_PRODUCTO);
         }
@@ -362,7 +360,7 @@ public class ControladorSupermercado {
     }
 
     private void agregarComprador() {
-        // [REQUISITO: Static y Final]
+        //REQUISITO: Static y Final
         String id = generarIdComprador();
         System.out.println("ID asignado automáticamente: " + id);
         System.out.print("Ingrese RUT del comprador: ");
@@ -411,7 +409,7 @@ public class ControladorSupermercado {
 
         Comprador comprador = buscarCompradorPorRut(rut);
         if (comprador == null) {
-            // [REQUISITO: Excepciones]
+            //REQUISITO: Excepciones
             throw new CompradorNoEncontradoException("No se encontró comprador con RUT: " + rut);
         }
 
@@ -420,18 +418,16 @@ public class ControladorSupermercado {
         Producto producto = inv.buscarProductoPorId(idProducto);
 
         if (producto == null) {
-            // [REQUISITO: Excepciones]
+            //REQUISITO: Excepciones
             throw new ProductoNoEncontradoException("El producto con ID " + idProducto + " no existe en el inventario.");
         }
 
         int cantidad = leerEntero("Ingrese cantidad: ");
 
         if (cantidad > producto.getStock()) {
-            // [REQUISITO: Excepciones]
+            //REQUISITO: Excepciones
             throw new StockInsuficienteException(producto.getStock(), cantidad);
         }
-
-        // [REQUISITO: Static y Final]
         Boleta boleta = new Boleta(generarIdBoleta(), comprador, CategoriaOferta.REBAJA_PORCENTUAL);
         boleta.agregarProducto(producto, cantidad);
         boleta.procesarPago();
@@ -447,20 +443,19 @@ public class ControladorSupermercado {
         }
         int i = 0;
         while (i < boletas.size()) {
-            // [REQUISITO: Static y Final]
             Boleta b = boletas.get(i);
             System.out.println(b + " | Formateado: " + formatearPrecio(b.getTotalPagar()));
             i = i + 1;
         }
     }
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static
     public static String formatearPrecio(double precio) {
         return "$" + String.format("%.2f", precio);
     }
 
-    // [REQUISITO: Colecciones]
-    // [REQUISITO: Interface]
+    //REQUISITO: Colecciones
+    //REQUISITO: Interface
     private void rankingProductos() {
         System.out.println("\n--- Ranking de productos más vendidos ---");
         ArrayList<Producto> lista = new ArrayList<>(inv.getMapaProductos().values());
@@ -478,8 +473,8 @@ public class ControladorSupermercado {
         }
     }
 
-    // [REQUISITO: Colecciones]
-    // [REQUISITO: Interface]
+    // REQUISITO: Colecciones
+    //REQUISITO: Interface
     private void rankingCompradores() {
         System.out.println("\n--- Ranking de compradores ---");
         ArrayList<Comprador> lista = new ArrayList<>(clientes);
@@ -496,7 +491,7 @@ public class ControladorSupermercado {
         }
     }
 
-    // [REQUISITO: Colecciones]
+    //REQUISITO: Colecciones
     private void ordenarProductos() {
         System.out.println("\n--- Ordenar productos ---");
         System.out.println("1. Por nombre");
@@ -533,7 +528,7 @@ public class ControladorSupermercado {
         }
     }
 
-    // [REQUISITO: Herencia]
+    //REQUISITO: Herencia
     private String obtenerTipoProducto(Producto p) {
         if (p instanceof Lacteo) {
             return "Lacteo";
@@ -545,7 +540,7 @@ public class ControladorSupermercado {
         return "Desconocido";
     }
 
-    // Getters y Setters
+    //Getters y Setters
     public Inventario getInventarioTienda() { return inv; }
     public void setInventarioTienda(Inventario inv) { this.inv = inv; }
 

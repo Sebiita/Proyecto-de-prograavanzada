@@ -6,13 +6,11 @@ import cl.duocuc.supermercado.util.Validador;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-// [REQUISITO: Herencia] — llamada polimorfica a calcularPrecio()
-
 public class Boleta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    // [REQUISITO: Static y Final]
+    //REQUISITO: Static y Final
     private static final double REBAJA_PORCENTUAL = 0.10;
     private static final double DESCUENTO_DOS_POR_UNO = 0.50;
 
@@ -23,7 +21,7 @@ public class Boleta implements Serializable {
     private CategoriaOferta categoriaOferta;
 
     public Boleta(String idBoleta, Comprador comprador, CategoriaOferta categoriaOferta) {
-        // [REQUISITO: Excepciones]
+        //REQUISITO: Excepciones
         Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");
         Validador.validarNoNulo(categoriaOferta, "La categoría de oferta es obligatoria.");
 
@@ -35,7 +33,7 @@ public class Boleta implements Serializable {
     }
 
     public void agregarProducto(Producto producto, int cantidad) {
-        // [REQUISITO: Excepciones]
+        //REQUISITO: Excepciones
         Validador.validarNoNulo(producto, "El producto a agregar no puede ser nulo.");
         if (cantidad <= 0) {
             throw new DatoInvalidoException("La cantidad debe ser mayor a cero.");
@@ -48,7 +46,7 @@ public class Boleta implements Serializable {
     }
 
     public void procesarPago() {
-        // [REQUISITO: Excepciones]
+        //REQUISITO: Excepciones
         if (listaCompra.isEmpty()) {
             throw new DatoInvalidoException("No se puede procesar una boleta sin productos.");
         }
@@ -56,7 +54,7 @@ public class Boleta implements Serializable {
         double suma = 0;
         int i = 0;
         while (i < listaCompra.size()) {
-            suma = suma + listaCompra.get(i).calcularPrecio(); // [REQUISITO: Herencia]
+            suma = suma + listaCompra.get(i).calcularPrecio(); //REQUISITO: Herencia
             i = i + 1;
         }
 
@@ -93,7 +91,7 @@ public class Boleta implements Serializable {
                 + " | Oferta: " + categoriaOferta;
     }
 
-    // Getters y Setters
+    //Getters y Setters
     public String getIdBoleta() { return idBoleta; }
     public void setIdBoleta(String idBoleta) {
         Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");

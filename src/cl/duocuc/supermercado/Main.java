@@ -2,18 +2,14 @@ package cl.duocuc.supermercado;
 
 import cl.duocuc.supermercado.sistema.ControladorSupermercado;
 
-// [REQUISITO: Package]
-
-/**
- * Punto de entrada del sistema de gestión del supermercado.
- */
+//Punto de entrada del sistema de gestión del supermercado
 public class Main {
 
     public static void main(String[] args) {
         ControladorSupermercado controlador = new ControladorSupermercado();
 
-        // [REQUISITO: Persistencia]
-        // Intenta cargar datos previos; si no existen, precarga datos de prueba.
+        //REQUISITO: Persistencia
+        //Intenta cargar datos previos; si no existen, precarga datos de prueba
         controlador.getGuardador().cargarDatos();
 
         if (controlador.getInventarioTienda().getMapaProductos().isEmpty()
@@ -21,7 +17,7 @@ public class Main {
             controlador.precargarDatos();
         }
 
-        // Inicia el menú interactivo.
+        //Inicia el menú interactivo
         controlador.iniciarMenu();
     }
 }

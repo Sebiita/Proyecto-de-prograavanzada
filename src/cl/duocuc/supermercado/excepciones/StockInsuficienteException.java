@@ -1,10 +1,7 @@
 package cl.duocuc.supermercado.excepciones;
 
-// [REQUISITO: Excepciones]
-
-/**
- * Excepción lanzada cuando no hay stock suficiente para realizar una venta.
- */
+//REQUISITO: Excepciones
+//Excepción lanzada cuando no hay stock suficiente para realizar una venta.
 public class StockInsuficienteException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
