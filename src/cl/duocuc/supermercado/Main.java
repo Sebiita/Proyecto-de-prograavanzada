@@ -8,8 +8,8 @@ public class Main {
     public static void main(String[] args) {
         ControladorSupermercado controlador = new ControladorSupermercado();
 
-        //REQUISITO: Persistencia
-        //Intenta cargar datos previos; si no existen, precarga datos de prueba
+        //llamada para la persistencia de datos
+        //aqui intenta cargar datos previos, si no existen precarga datos de prueba
         controlador.getGuardador().cargarDatos();
 
         if (controlador.getInventarioTienda().getMapaProductos().isEmpty()

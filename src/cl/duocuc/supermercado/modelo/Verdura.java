@@ -3,13 +3,13 @@ package cl.duocuc.supermercado.modelo;
 import cl.duocuc.supermercado.enums.Medida;
 import java.io.Serializable;
 
-//REQUISITO: Herencia
+//requisito herencia (clase hijo)
 
 public class Verdura extends Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //REQUISITO: Static y Final
+    //requisito static y final
     private static final double RECARGO_ORGANICO = 1.20;
 
     private boolean esOrganica;
@@ -22,7 +22,6 @@ public class Verdura extends Producto implements Serializable {
 
     @Override
     public double calcularPrecio() {
-        //REQUISITO: Static y Final
         if (esOrganica) {
             return valorBase * RECARGO_ORGANICO;
         }

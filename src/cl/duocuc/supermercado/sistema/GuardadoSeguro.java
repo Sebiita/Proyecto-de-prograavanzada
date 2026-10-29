@@ -15,8 +15,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//REQUISITO: Interface
-//REQUISITO: Persistencia
+//archivo para la persistencia de datos
 
 public class GuardadoSeguro implements Registrable {
 
@@ -48,7 +47,6 @@ public class GuardadoSeguro implements Registrable {
     @Override
     @SuppressWarnings("unchecked")
     public void cargarDatos() {
-        //REQUISITO: Persistencia
         File archivo = new File(RUTA_DATOS);
         if (!archivo.exists()) {
             System.out.println("No existe archivo de datos previo. Se inicia con datos vacios.");
@@ -71,8 +69,7 @@ public class GuardadoSeguro implements Registrable {
         }
     }
 
-    //REQUISITO: Static y Final
-    //Guarda los contadores estáticos en un archivo de texto simple
+    //Aqui se guardan los contadores estáticos en un archivo de texto simple
     private void guardarContadores() {
         File archivo = new File(RUTA_CONTADORES);
         archivo.getParentFile().mkdirs();
@@ -86,7 +83,6 @@ public class GuardadoSeguro implements Registrable {
         }
     }
 
-    //REQUISITO: Static y Final
     //Carga los contadores estáticos desde un archivo de texto simple
     private void cargarContadores() {
         File archivo = new File(RUTA_CONTADORES);

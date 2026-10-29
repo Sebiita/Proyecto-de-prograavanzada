@@ -1,7 +1,6 @@
 package cl.duocuc.supermercado.interfaces;
 
-//REQUISITO: Interface
-//Interfaz que define el comportamiento de objetos que pueden ser persistidos.
+//interfaz para definir el comportamiento de objetos que pueden ser persistidos
 public interface Registrable {
 
     //Guarda los datos del objeto en un medio persistente

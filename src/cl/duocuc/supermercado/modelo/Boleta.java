@@ -10,7 +10,7 @@ public class Boleta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //REQUISITO: Static y Final
+    //Requisito de static y final
     private static final double REBAJA_PORCENTUAL = 0.10;
     private static final double DESCUENTO_DOS_POR_UNO = 0.50;
 
@@ -21,7 +21,6 @@ public class Boleta implements Serializable {
     private CategoriaOferta categoriaOferta;
 
     public Boleta(String idBoleta, Comprador comprador, CategoriaOferta categoriaOferta) {
-        //REQUISITO: Excepciones
         Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");
         Validador.validarNoNulo(categoriaOferta, "La categoría de oferta es obligatoria.");
 
@@ -33,7 +32,6 @@ public class Boleta implements Serializable {
     }
 
     public void agregarProducto(Producto producto, int cantidad) {
-        //REQUISITO: Excepciones
         Validador.validarNoNulo(producto, "El producto a agregar no puede ser nulo.");
         if (cantidad <= 0) {
             throw new DatoInvalidoException("La cantidad debe ser mayor a cero.");
@@ -46,7 +44,6 @@ public class Boleta implements Serializable {
     }
 
     public void procesarPago() {
-        //REQUISITO: Excepciones
         if (listaCompra.isEmpty()) {
             throw new DatoInvalidoException("No se puede procesar una boleta sin productos.");
         }
@@ -54,7 +51,7 @@ public class Boleta implements Serializable {
         double suma = 0;
         int i = 0;
         while (i < listaCompra.size()) {
-            suma = suma + listaCompra.get(i).calcularPrecio(); //REQUISITO: Herencia
+            suma = suma + listaCompra.get(i).calcularPrecio();
             i = i + 1;
         }
 
@@ -91,7 +88,7 @@ public class Boleta implements Serializable {
                 + " | Oferta: " + categoriaOferta;
     }
 
-    //Getters y Setters
+    //Getters y setters
     public String getIdBoleta() { return idBoleta; }
     public void setIdBoleta(String idBoleta) {
         Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");

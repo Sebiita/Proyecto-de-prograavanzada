@@ -6,7 +6,7 @@ import cl.duocuc.supermercado.interfaces.Rankeable;
 import cl.duocuc.supermercado.util.Validador;
 import java.io.Serializable;
 
-//REQUISITO: Herencia
+//requisito herencia (clase padre)
 
 public abstract class Producto implements Rankeable, Serializable {
 
