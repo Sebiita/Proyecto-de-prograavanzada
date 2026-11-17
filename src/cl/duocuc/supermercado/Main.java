@@ -1,6 +1,8 @@
 package cl.duocuc.supermercado;
 
 import cl.duocuc.supermercado.sistema.ControladorSupermercado;
+import cl.duocuc.supermercado.ui.VentanaPrincipal;
+import javax.swing.SwingUtilities;
 
 //Punto de entrada del sistema de gestión del supermercado
 public class Main {
@@ -17,7 +19,11 @@ public class Main {
             controlador.precargarDatos();
         }
 
-        //Inicia el menú interactivo
-        controlador.iniciarMenu();
+        if (args.length > 0 && "--consola".equalsIgnoreCase(args[0])) {
+            // Mantiene disponible la interfaz de consola de la Unidad II.
+            controlador.iniciarMenu();
+        } else {
+            SwingUtilities.invokeLater(() -> new VentanaPrincipal(controlador).setVisible(true));
+        }
     }
 }
