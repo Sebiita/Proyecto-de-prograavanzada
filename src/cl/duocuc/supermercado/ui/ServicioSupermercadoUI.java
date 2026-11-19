@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Acciones de la interfaz que reutilizan el modelo y la persistencia de U2. */
 public class ServicioSupermercadoUI {
 
     private final ControladorSupermercado controlador;

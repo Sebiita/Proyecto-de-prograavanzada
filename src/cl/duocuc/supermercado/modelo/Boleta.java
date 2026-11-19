@@ -10,7 +10,6 @@ public class Boleta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //Requisito de static y final
     private static final double REBAJA_PORCENTUAL = 0.10;
     private static final double DESCUENTO_DOS_POR_UNO = 0.50;
 
@@ -88,7 +87,6 @@ public class Boleta implements Serializable {
                 + " | Oferta: " + categoriaOferta;
     }
 
-    //Getters y setters
     public String getIdBoleta() { return idBoleta; }
     public void setIdBoleta(String idBoleta) {
         Validador.validarNoVacio(idBoleta, "El ID de la boleta no puede ser vacío.");

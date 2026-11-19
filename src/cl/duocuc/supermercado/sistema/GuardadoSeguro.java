@@ -17,8 +17,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Scanner;
 
-//archivo para la persistencia de datos
-
 public class GuardadoSeguro implements Registrable {
 
     private static final String RUTA_DATOS = "data/supermercado.dat";
@@ -65,8 +63,6 @@ public class GuardadoSeguro implements Registrable {
             ctrl.setRegistroBoletas((ArrayList<Boleta>) ois.readObject());
             cargarContadores();
 
-            // Los archivos creados antes de agregar el ID de comprador lo cargan como null.
-            // Completar esos IDs evita celdas vacías sin cambiar RUT, nombres ni boletas.
             if (completarIdsCompradores()) {
                 guardarDatos();
             }
@@ -115,7 +111,6 @@ public class GuardadoSeguro implements Registrable {
         return modificados;
     }
 
-    //Aqui se guardan los contadores estáticos en un archivo de texto simple
     private void guardarContadores() {
         File archivo = new File(RUTA_CONTADORES);
         archivo.getParentFile().mkdirs();
@@ -129,7 +124,6 @@ public class GuardadoSeguro implements Registrable {
         }
     }
 
-    //Carga los contadores estáticos desde un archivo de texto simple
     private void cargarContadores() {
         File archivo = new File(RUTA_CONTADORES);
         if (!archivo.exists()) {

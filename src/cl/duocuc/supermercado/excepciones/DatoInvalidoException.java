@@ -1,6 +1,5 @@
 package cl.duocuc.supermercado.excepciones;
 
-//excepción lanzada cuando se proporciona un dato inválido al crear o modificar un objeto del sistema
 public class DatoInvalidoException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;

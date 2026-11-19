@@ -3,13 +3,10 @@ package cl.duocuc.supermercado.modelo;
 import cl.duocuc.supermercado.enums.Medida;
 import java.io.Serializable;
 
-//requisito herencia (clase hijo)
-
 public class Limpieza extends Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //requisito static y final
     private static final double IMPUESTO_TOXICO = 1.10;
     private static final double DESCUENTO_NO_TOXICO = 0.95;
 

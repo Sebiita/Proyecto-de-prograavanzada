@@ -6,8 +6,6 @@ import cl.duocuc.supermercado.interfaces.Rankeable;
 import cl.duocuc.supermercado.util.Validador;
 import java.io.Serializable;
 
-//requisito herencia (clase padre)
-
 public abstract class Producto implements Rankeable, Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,7 +19,7 @@ public abstract class Producto implements Rankeable, Serializable {
 
     public Producto(String idProducto, String denominacion, double valorBase,
                     int stock, Medida unidad) {
-        //REQUISITO: Excepciones
+
         Validador.validarNoVacio(idProducto, "El ID del producto no puede ser vacío.");
         Validador.validarNoVacio(denominacion, "La denominación del producto no puede ser vacía.");
         Validador.validarNoNegativo(valorBase, "El valor base no puede ser negativo.");
@@ -39,7 +37,7 @@ public abstract class Producto implements Rankeable, Serializable {
     public abstract double calcularPrecio();
 
     public void descontarStock(int cantidad) {
-        //REQUISITO: Excepciones
+
         if (cantidad <= 0) {
             throw new DatoInvalidoException("La cantidad a descontar debe ser mayor a cero.");
         }
@@ -49,7 +47,6 @@ public abstract class Producto implements Rankeable, Serializable {
         this.stock = this.stock - cantidad;
         this.vendidos = this.vendidos + cantidad;
     }
-
 
     @Override
     public double obtenerCriterioRanking() {
@@ -64,7 +61,6 @@ public abstract class Producto implements Rankeable, Serializable {
                 + " | Vendidos: " + vendidos;
     }
 
-    //Getters y Setters
     public String getIdProducto() { return idProducto; }
     public void setIdProducto(String idProducto) {
         Validador.validarNoVacio(idProducto, "El ID del producto no puede ser vacío.");

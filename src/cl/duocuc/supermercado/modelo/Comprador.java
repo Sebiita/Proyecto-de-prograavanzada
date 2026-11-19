@@ -5,8 +5,6 @@ import cl.duocuc.supermercado.util.Validador;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-//requisito de herencia
-
 public class Comprador implements Rankeable, Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,7 +47,6 @@ public class Comprador implements Rankeable, Serializable {
                 + " | Total gastado: $" + String.format("%.2f", obtenerCriterioRanking());
     }
 
-    //Getters y setters
     public String getIdComprador() { return idComprador; }
     public void setIdComprador(String idComprador) {
         Validador.validarNoVacio(idComprador, "El ID del comprador no puede ser vacío.");
