@@ -56,8 +56,6 @@ public class PanelProductos extends PanelBase {
         EstilosUI.tabla(tabla);
         cuerpo.add(barra, BorderLayout.NORTH);
         cuerpo.add(new JScrollPane(tabla), BorderLayout.CENTER);
-        cuerpo.add(instrucciones("Busca por nombre o ID. Para registrar un articulo, completa el formulario de "
-                + "“Nuevo producto”. Usa Exportar JSON si necesitas compartir el inventario."), BorderLayout.SOUTH);
         add(cuerpo, BorderLayout.CENTER);
         filtrar.addActionListener(e -> actualizar());
         buscar.addActionListener(e -> actualizar());
@@ -99,7 +97,18 @@ public class PanelProductos extends PanelBase {
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (resultado != JOptionPane.OK_OPTION) return;
         try {
+            String nombreIngresado = nombre.getText().trim();
             double valor = Double.parseDouble(precio.getText().trim().replace(',', '.'));
+            if (nombreIngresado.isEmpty() || !Double.isFinite(valor) || valor < 1) {
+                JOptionPane.showMessageDialog(this, "Ingrese un nombre y un precio de al menos $1.",
+                        "Datos invalidos", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int confirmar = JOptionPane.showConfirmDialog(this,
+                    "¿Registrar " + nombreIngresado + " con precio $" + String.format("%,.0f", valor)
+                    + " y stock " + stock.getValue() + "?", "Confirmar producto",
+                    JOptionPane.YES_NO_OPTION);
+            if (confirmar != JOptionPane.YES_OPTION) return;
             servicio.agregarProducto(nombre.getText(), valor, (Integer) stock.getValue(),
                     (Medida) unidad.getSelectedItem(), (String) tipo.getSelectedItem(), atributo.isSelected());
             actualizar();

@@ -49,10 +49,6 @@ public class PanelVentas extends PanelBase {
         JPanel formulario = tarjeta();
         formulario.setPreferredSize(new Dimension(850, 180));
         formulario.setMaximumSize(new Dimension(Integer.MAX_VALUE, 180));
-        formulario.add(instrucciones("Selecciona un comprador y un producto, define cantidad y oferta, "
-                + "y luego usa el boton de abajo para comprar y crear la boleta."),
-                BorderLayout.NORTH);
-
         JPanel campos = new JPanel(new GridLayout(2, 1, 0, 12));
         campos.setOpaque(false);
 
@@ -77,7 +73,7 @@ public class PanelVentas extends PanelBase {
         historial.setPreferredSize(new Dimension(850, 260));
         historial.setMaximumSize(new Dimension(Integer.MAX_VALUE, 260));
         JLabel titulo = new JLabel("Historial de boletas");
-        titulo.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 16));
+        titulo.setFont(EstilosUI.FUENTE_TARJETA);
         titulo.setForeground(EstilosUI.AZUL);
         JTable tabla = new JTable(modelo);
         EstilosUI.tabla(tabla);
@@ -93,8 +89,6 @@ public class PanelVentas extends PanelBase {
         JPanel pie = new JPanel(new BorderLayout(12, 0));
         pie.setOpaque(false);
         pie.setPreferredSize(new Dimension(850, 64));
-        pie.add(instrucciones("Revisa los datos; al confirmar se crea la boleta y se descuenta el stock."),
-                BorderLayout.CENTER);
         pie.add(registrar, BorderLayout.EAST);
 
         cuerpo.add(formulario);

@@ -30,7 +30,7 @@ public class PanelCompradores extends PanelBase {
         tarjeta.setPreferredSize(new Dimension(850, 300));
         tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 300));
         JLabel titulo = new JLabel("Registro de clientes");
-        titulo.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 16));
+        titulo.setFont(EstilosUI.FUENTE_TARJETA);
         titulo.setForeground(EstilosUI.AZUL);
         JButton nuevo = EstilosUI.boton("＋ Nuevo comprador", EstilosUI.TURQUESA);
         nuevo.setPreferredSize(new Dimension(220, 48));
@@ -43,8 +43,6 @@ public class PanelCompradores extends PanelBase {
         JPanel pie = new JPanel(new BorderLayout(12, 0));
         pie.setOpaque(false);
         pie.setPreferredSize(new Dimension(850, 64));
-        pie.add(instrucciones("Revisa el RUT y el nombre. Al presionar Nuevo comprador se abre el formulario "
-                + "para guardar a la persona."), BorderLayout.CENTER);
         pie.add(nuevo, BorderLayout.EAST);
 
         tarjeta.add(titulo, BorderLayout.NORTH);
@@ -75,8 +73,19 @@ public class PanelCompradores extends PanelBase {
         int resultado = JOptionPane.showConfirmDialog(this, formulario, "Nuevo comprador",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (resultado != JOptionPane.OK_OPTION) return;
+        String rutIngresado = rut.getText().trim();
+        String nombreIngresado = nombre.getText().trim();
+        if (rutIngresado.isEmpty() || nombreIngresado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el RUT y el nombre del comprador.",
+                    "Faltan datos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int confirmar = JOptionPane.showConfirmDialog(this,
+                "¿Registrar a " + nombreIngresado + " con RUT " + rutIngresado + "?",
+                "Confirmar comprador", JOptionPane.YES_NO_OPTION);
+        if (confirmar != JOptionPane.YES_OPTION) return;
         try {
-            servicio.agregarComprador(rut.getText(), nombre.getText());
+            servicio.agregarComprador(rutIngresado, nombreIngresado);
             actualizar();
             JOptionPane.showMessageDialog(this, "Comprador agregado y guardado.", "Registro completo",
                     JOptionPane.INFORMATION_MESSAGE);
