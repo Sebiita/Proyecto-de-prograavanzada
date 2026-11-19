@@ -93,9 +93,10 @@ public class PanelProductos extends PanelBase {
         formulario.add(new JLabel("Categoría")); formulario.add(tipo);
         formulario.add(new JLabel("Unidad")); formulario.add(unidad);
         formulario.add(etiqueta); formulario.add(atributo);
-        int resultado = JOptionPane.showConfirmDialog(this, formulario, "Nuevo producto",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (resultado != JOptionPane.OK_OPTION) return;
+        Object[] botones = {"Registrar", "Cancelar"};
+        int resultado = JOptionPane.showOptionDialog(this, formulario, "Nuevo producto",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, botones[0]);
+        if (resultado != 0) return;
         try {
             String nombreIngresado = nombre.getText().trim();
             double valor = Double.parseDouble(precio.getText().trim().replace(',', '.'));

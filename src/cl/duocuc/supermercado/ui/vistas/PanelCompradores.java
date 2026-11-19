@@ -70,9 +70,10 @@ public class PanelCompradores extends PanelBase {
         JPanel formulario = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
         formulario.add(new JLabel("RUT")); formulario.add(rut);
         formulario.add(new JLabel("Nombre / alias")); formulario.add(nombre);
-        int resultado = JOptionPane.showConfirmDialog(this, formulario, "Nuevo comprador",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (resultado != JOptionPane.OK_OPTION) return;
+        Object[] botones = {"Registrar", "Cancelar"};
+        int resultado = JOptionPane.showOptionDialog(this, formulario, "Nuevo comprador",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, botones[0]);
+        if (resultado != 0) return;
         String rutIngresado = rut.getText().trim();
         String nombreIngresado = nombre.getText().trim();
         if (rutIngresado.isEmpty() || nombreIngresado.isEmpty()) {

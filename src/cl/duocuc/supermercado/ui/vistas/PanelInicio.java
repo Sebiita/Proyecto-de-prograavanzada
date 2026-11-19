@@ -30,7 +30,18 @@ public class PanelInicio extends PanelBase {
 
     public PanelInicio(ServicioSupermercadoUI servicio, Consumer<String> navegar) {
         super(servicio);
-        add(encabezado("Resumen general", "Una vista rápida de la actividad del supermercado."), BorderLayout.NORTH);
+        JPanel encabezadoInicio = new JPanel(new BorderLayout(0, 5));
+        encabezadoInicio.setOpaque(false);
+        JLabel tituloInicio = new JLabel("Resumen general", JLabel.CENTER);
+        tituloInicio.setFont(EstilosUI.FUENTE_TITULO);
+        tituloInicio.setForeground(EstilosUI.AZUL);
+        JLabel descripcionInicio = new JLabel(
+                "Una vista rápida de la actividad del supermercado.", JLabel.CENTER);
+        descripcionInicio.setFont(EstilosUI.FUENTE_SUBTITULO);
+        descripcionInicio.setForeground(EstilosUI.TEXTO_SUAVE);
+        encabezadoInicio.add(tituloInicio, BorderLayout.NORTH);
+        encabezadoInicio.add(descripcionInicio, BorderLayout.CENTER);
+        add(encabezadoInicio, BorderLayout.NORTH);
         JPanel centro = new JPanel(new BorderLayout(0, 14));
         centro.setOpaque(false);
         JPanel metricas = new JPanel(new GridLayout(1, 4, 14, 0));
