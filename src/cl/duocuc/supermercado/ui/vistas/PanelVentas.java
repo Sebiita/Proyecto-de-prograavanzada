@@ -10,10 +10,14 @@ import cl.duocuc.supermercado.ui.EstilosUI;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -39,31 +43,76 @@ public class PanelVentas extends PanelBase {
     public PanelVentas(ServicioSupermercadoUI servicio) {
         super(servicio);
         add(encabezado("Ventas y boletas", "Registra una compra y actualiza el inventario al confirmar."), BorderLayout.NORTH);
-        JPanel cuerpo = new JPanel(new BorderLayout(0, 14));
+        JPanel cuerpo = new JPanel();
+        cuerpo.setLayout(new BoxLayout(cuerpo, BoxLayout.Y_AXIS));
         cuerpo.setOpaque(false);
         JPanel formulario = tarjeta();
-        JPanel campos = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 4));
+        formulario.setPreferredSize(new Dimension(850, 180));
+        formulario.setMaximumSize(new Dimension(Integer.MAX_VALUE, 180));
+        formulario.add(instrucciones("Selecciona un comprador y un producto, define cantidad y oferta, "
+                + "y luego usa el boton de abajo para comprar y crear la boleta."),
+                BorderLayout.NORTH);
+
+        JPanel campos = new JPanel(new GridLayout(2, 1, 0, 12));
         campos.setOpaque(false);
-        campos.add(new JLabel("Comprador")); campos.add(comprador);
-        campos.add(new JLabel("Producto")); campos.add(producto);
-        campos.add(new JLabel("Cantidad")); campos.add(cantidad);
-        campos.add(new JLabel("Oferta")); campos.add(oferta);
-        JButton registrar = EstilosUI.boton("Registrar venta", EstilosUI.TURQUESA);
-        campos.add(registrar);
+
+        JPanel filaPrincipal = new JPanel(new GridLayout(1, 2, 14, 0));
+        filaPrincipal.setOpaque(false);
+        filaPrincipal.add(campo("Comprador", comprador));
+        filaPrincipal.add(campo("Producto", producto));
+
+        JPanel filaOpciones = new JPanel(new BorderLayout(14, 0));
+        filaOpciones.setOpaque(false);
+        JPanel opciones = new JPanel(new GridLayout(1, 2, 14, 0));
+        opciones.setOpaque(false);
+        opciones.add(campo("Cantidad", cantidad));
+        opciones.add(campo("Oferta", oferta));
+        filaOpciones.add(opciones, BorderLayout.CENTER);
+        campos.add(filaPrincipal);
+        campos.add(filaOpciones);
         formulario.add(campos, BorderLayout.CENTER);
 
         JPanel historial = tarjeta();
+        historial.setLayout(new BorderLayout(0, 8));
+        historial.setPreferredSize(new Dimension(850, 260));
+        historial.setMaximumSize(new Dimension(Integer.MAX_VALUE, 260));
         JLabel titulo = new JLabel("Historial de boletas");
         titulo.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 16));
         titulo.setForeground(EstilosUI.AZUL);
         JTable tabla = new JTable(modelo);
         EstilosUI.tabla(tabla);
+        JScrollPane desplazamiento = new JScrollPane(tabla);
+        desplazamiento.setPreferredSize(new Dimension(850, 205));
+        desplazamiento.setMaximumSize(new Dimension(Integer.MAX_VALUE, 205));
         historial.add(titulo, BorderLayout.NORTH);
-        historial.add(new JScrollPane(tabla), BorderLayout.CENTER);
-        cuerpo.add(formulario, BorderLayout.NORTH);
-        cuerpo.add(historial, BorderLayout.CENTER);
+        historial.add(desplazamiento, BorderLayout.CENTER);
+
+        JButton registrar = EstilosUI.boton("Comprar y crear boleta", EstilosUI.TURQUESA);
+        registrar.setPreferredSize(new Dimension(245, 48));
+        registrar.setMinimumSize(new Dimension(245, 48));
+        JPanel pie = new JPanel(new BorderLayout(12, 0));
+        pie.setOpaque(false);
+        pie.setPreferredSize(new Dimension(850, 64));
+        pie.add(instrucciones("Revisa los datos; al confirmar se crea la boleta y se descuenta el stock."),
+                BorderLayout.CENTER);
+        pie.add(registrar, BorderLayout.EAST);
+
+        cuerpo.add(formulario);
+        cuerpo.add(Box.createVerticalStrut(12));
+        cuerpo.add(historial);
         add(cuerpo, BorderLayout.CENTER);
+        add(pie, BorderLayout.SOUTH);
         registrar.addActionListener(e -> registrar());
+    }
+
+    private JPanel campo(String titulo, JComponent componente) {
+        JPanel panel = new JPanel(new BorderLayout(0, 5));
+        panel.setOpaque(false);
+        JLabel etiqueta = new JLabel(titulo);
+        etiqueta.setForeground(EstilosUI.TEXTO);
+        panel.add(etiqueta, BorderLayout.NORTH);
+        panel.add(componente, BorderLayout.CENTER);
+        return panel;
     }
 
     public void actualizar() {

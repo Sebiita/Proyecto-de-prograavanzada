@@ -3,6 +3,7 @@ package cl.duocuc.supermercado.ui.vistas;
 import cl.duocuc.supermercado.ui.EstilosUI;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -40,6 +41,19 @@ abstract class PanelBase extends JPanel {
         panel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(EstilosUI.SUAVE),
                 BorderFactory.createEmptyBorder(16, 16, 16, 16)));
+        return panel;
+    }
+
+    protected JPanel instrucciones(String texto) {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(new Color(232, 243, 246));
+        panel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createMatteBorder(0, 4, 0, 0, EstilosUI.TURQUESA),
+                BorderFactory.createEmptyBorder(10, 12, 10, 12)));
+        JLabel mensaje = new JLabel("<html>" + texto + "</html>");
+        mensaje.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        mensaje.setForeground(EstilosUI.TEXTO);
+        panel.add(mensaje, BorderLayout.CENTER);
         return panel;
     }
 }

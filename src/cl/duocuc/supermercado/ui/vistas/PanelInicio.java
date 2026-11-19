@@ -31,8 +31,10 @@ public class PanelInicio extends PanelBase {
     public PanelInicio(ServicioSupermercadoUI servicio, Consumer<String> navegar) {
         super(servicio);
         add(encabezado("Resumen general", "Una vista rápida de la actividad del supermercado."), BorderLayout.NORTH);
-        JPanel centro = new JPanel(new BorderLayout(0, 18));
+        JPanel centro = new JPanel(new BorderLayout(0, 14));
         centro.setOpaque(false);
+        JPanel contenido = new JPanel(new BorderLayout(0, 16));
+        contenido.setOpaque(false);
         JPanel metricas = new JPanel(new GridLayout(1, 4, 14, 0));
         metricas.setOpaque(false);
         metricas.add(metrica("PRODUCTOS", productos, new Color(22, 132, 135)));
@@ -58,7 +60,10 @@ public class PanelInicio extends PanelBase {
         centro.add(metricas, BorderLayout.NORTH);
         centro.add(recientes, BorderLayout.CENTER);
         centro.add(accesos, BorderLayout.SOUTH);
-        add(centro, BorderLayout.CENTER);
+        contenido.add(instrucciones("Revisa el resumen y usa el menu izquierdo para moverte por las secciones. "
+                + "Desde aqui tambien puedes ir directo a inventario, compradores o ventas."), BorderLayout.NORTH);
+        contenido.add(centro, BorderLayout.CENTER);
+        add(contenido, BorderLayout.CENTER);
     }
 
     private JPanel metrica(String titulo, JLabel valor, Color color) {

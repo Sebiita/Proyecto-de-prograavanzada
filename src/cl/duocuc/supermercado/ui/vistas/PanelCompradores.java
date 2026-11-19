@@ -5,7 +5,7 @@ import cl.duocuc.supermercado.modelo.Comprador;
 import cl.duocuc.supermercado.ui.EstilosUI;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,16 +27,33 @@ public class PanelCompradores extends PanelBase {
         super(servicio);
         add(encabezado("Compradores", "Mantén los datos de clientes y revisa su actividad."), BorderLayout.NORTH);
         JPanel tarjeta = tarjeta();
-        JPanel barra = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        barra.setOpaque(false);
+        tarjeta.setPreferredSize(new Dimension(850, 300));
+        tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 300));
+        JLabel titulo = new JLabel("Registro de clientes");
+        titulo.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 16));
+        titulo.setForeground(EstilosUI.AZUL);
         JButton nuevo = EstilosUI.boton("＋ Nuevo comprador", EstilosUI.TURQUESA);
-        barra.add(new JLabel("Registro de clientes"));
-        barra.add(nuevo);
+        nuevo.setPreferredSize(new Dimension(220, 48));
+        nuevo.setMinimumSize(new Dimension(220, 48));
         JTable tabla = new JTable(modelo);
         EstilosUI.tabla(tabla);
-        tarjeta.add(barra, BorderLayout.NORTH);
-        tarjeta.add(new JScrollPane(tabla), BorderLayout.CENTER);
-        add(tarjeta, BorderLayout.CENTER);
+        JScrollPane desplazamiento = new JScrollPane(tabla);
+        desplazamiento.setPreferredSize(new Dimension(850, 220));
+
+        JPanel pie = new JPanel(new BorderLayout(12, 0));
+        pie.setOpaque(false);
+        pie.setPreferredSize(new Dimension(850, 64));
+        pie.add(instrucciones("Revisa el RUT y el nombre. Al presionar Nuevo comprador se abre el formulario "
+                + "para guardar a la persona."), BorderLayout.CENTER);
+        pie.add(nuevo, BorderLayout.EAST);
+
+        tarjeta.add(titulo, BorderLayout.NORTH);
+        tarjeta.add(desplazamiento, BorderLayout.CENTER);
+        JPanel zona = new JPanel(new BorderLayout());
+        zona.setOpaque(false);
+        zona.add(tarjeta, BorderLayout.NORTH);
+        add(zona, BorderLayout.CENTER);
+        add(pie, BorderLayout.SOUTH);
         nuevo.addActionListener(e -> agregar());
     }
 

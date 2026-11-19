@@ -84,10 +84,6 @@ public class VentanaPrincipal extends VentanaBase {
         navegacion.add(nav("＋    Ventas", VENTAS));
         lateral.add(marca, BorderLayout.NORTH);
         lateral.add(navegacion, BorderLayout.CENTER);
-        JLabel pie = new JLabel("UNIDAD III  ·  VISTA PREVIA");
-        pie.setForeground(new java.awt.Color(186, 203, 216));
-        pie.setFont(new Font("SansSerif", Font.PLAIN, 10));
-        lateral.add(pie, BorderLayout.SOUTH);
         return lateral;
     }
 

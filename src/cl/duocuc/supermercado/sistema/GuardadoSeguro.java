@@ -13,6 +13,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Scanner;
 
 //archivo para la persistencia de datos
@@ -63,10 +65,54 @@ public class GuardadoSeguro implements Registrable {
             ctrl.setRegistroBoletas((ArrayList<Boleta>) ois.readObject());
             cargarContadores();
 
+            // Los archivos creados antes de agregar el ID de comprador lo cargan como null.
+            // Completar esos IDs evita celdas vacías sin cambiar RUT, nombres ni boletas.
+            if (completarIdsCompradores()) {
+                guardarDatos();
+            }
+
             System.out.println("Datos cargados exitosamente desde: " + RUTA_DATOS);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al cargar los datos: " + e.getMessage());
         }
+    }
+
+    private boolean completarIdsCompradores() {
+        ArrayList<Comprador> compradores = ctrl.getListaCompradores();
+        Set<Integer> idsUsados = new HashSet<>();
+        int mayorId = 0;
+
+        for (Comprador comprador : compradores) {
+            String id = comprador.getIdComprador();
+            if (id == null || !id.matches("CLI-\\d+")) {
+                continue;
+            }
+            int numero = Integer.parseInt(id.substring(4));
+            idsUsados.add(numero);
+            mayorId = Math.max(mayorId, numero);
+        }
+
+        boolean modificados = false;
+        int siguienteLibre = 1;
+        for (Comprador comprador : compradores) {
+            String id = comprador.getIdComprador();
+            if (id != null && id.matches("CLI-\\d+")) {
+                continue;
+            }
+            while (idsUsados.contains(siguienteLibre)) {
+                siguienteLibre++;
+            }
+            comprador.setIdComprador("CLI-" + String.format("%03d", siguienteLibre));
+            idsUsados.add(siguienteLibre);
+            mayorId = Math.max(mayorId, siguienteLibre);
+            siguienteLibre++;
+            modificados = true;
+        }
+
+        if (modificados && ControladorSupermercado.getContadorCompradores() <= mayorId) {
+            ControladorSupermercado.setContadorCompradores(mayorId + 1);
+        }
+        return modificados;
     }
 
     //Aqui se guardan los contadores estáticos en un archivo de texto simple

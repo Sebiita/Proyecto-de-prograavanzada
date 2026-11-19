@@ -23,6 +23,9 @@ public final class EstilosUI {
         boton.setFont(new Font("SansSerif", Font.BOLD, 13));
         boton.setForeground(fondo.equals(BLANCO) ? TEXTO : BLANCO);
         boton.setBackground(fondo);
+        boton.setOpaque(true);
+        boton.setContentAreaFilled(true);
+        boton.setBorderPainted(true);
         boton.setFocusPainted(false);
         boton.setBorder(BorderFactory.createEmptyBorder(11, 16, 11, 16));
         return boton;
