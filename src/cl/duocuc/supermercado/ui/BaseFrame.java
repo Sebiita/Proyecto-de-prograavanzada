@@ -34,7 +34,7 @@ public abstract class BaseFrame extends JFrame {
     protected JPanel barraVolver() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 8));
         panel.setOpaque(false);
-        JButton volver = EstilosUI.boton("← Volver", EstilosUI.AZUL);
+        JButton volver = Estilo.boton("← Volver", Estilo.AZUL);
         volver.addActionListener(e -> {
             dispose();
             new InicioVista(controlador).mostrar();

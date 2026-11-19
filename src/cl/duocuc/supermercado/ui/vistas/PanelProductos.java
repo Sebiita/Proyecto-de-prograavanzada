@@ -3,7 +3,7 @@ package cl.duocuc.supermercado.ui.vistas;
 import cl.duocuc.supermercado.enums.Medida;
 import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
 import cl.duocuc.supermercado.modelo.Producto;
-import cl.duocuc.supermercado.ui.EstilosUI;
+import cl.duocuc.supermercado.ui.Estilo;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -40,9 +40,9 @@ public class PanelProductos extends PanelBase {
         JPanel busqueda = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         busqueda.setOpaque(false);
         buscar.putClientProperty("JTextField.placeholderText", "Buscar por nombre o ID");
-        JButton filtrar = EstilosUI.boton("Buscar", EstilosUI.AZUL);
-        JButton nuevo = EstilosUI.boton("＋ Nuevo producto", EstilosUI.TURQUESA);
-        JButton exportar = EstilosUI.boton("Exportar JSON", EstilosUI.BLANCO);
+        JButton filtrar = Estilo.boton("Buscar", Estilo.AZUL);
+        JButton nuevo = Estilo.boton("＋ Nuevo producto", Estilo.TURQUESA);
+        JButton exportar = Estilo.boton("Exportar JSON", Estilo.BLANCO);
         busqueda.add(new JLabel("Filtrar"));
         busqueda.add(buscar);
         busqueda.add(filtrar);
@@ -53,7 +53,7 @@ public class PanelProductos extends PanelBase {
         barra.add(busqueda, BorderLayout.WEST);
         barra.add(acciones, BorderLayout.EAST);
         JTable tabla = new JTable(modelo);
-        EstilosUI.tabla(tabla);
+        Estilo.tabla(tabla);
         cuerpo.add(barra, BorderLayout.NORTH);
         cuerpo.add(new JScrollPane(tabla), BorderLayout.CENTER);
         add(cuerpo, BorderLayout.CENTER);
@@ -113,7 +113,10 @@ public class PanelProductos extends PanelBase {
             servicio.agregarProducto(nombre.getText(), valor, (Integer) stock.getValue(),
                     (Medida) unidad.getSelectedItem(), (String) tipo.getSelectedItem(), atributo.isSelected());
             actualizar();
-            JOptionPane.showMessageDialog(this, "Producto agregado y guardado.", "Catálogo actualizado",
+            JOptionPane.showMessageDialog(this, "Producto registrado:\n"
+                    + nombreIngresado + " · " + tipo.getSelectedItem()
+                    + " · $" + String.format("%,.0f", valor)
+                    + " · Stock: " + stock.getValue(), "Catálogo actualizado",
                     JOptionPane.INFORMATION_MESSAGE);
         } catch (NumberFormatException | DatoInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "No se pudo agregar",

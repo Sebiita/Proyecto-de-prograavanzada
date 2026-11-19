@@ -1,7 +1,7 @@
 package cl.duocuc.supermercado.ui.vistas;
 
 import cl.duocuc.supermercado.modelo.Boleta;
-import cl.duocuc.supermercado.ui.EstilosUI;
+import cl.duocuc.supermercado.ui.Estilo;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,12 +33,12 @@ public class PanelInicio extends PanelBase {
         JPanel encabezadoInicio = new JPanel(new BorderLayout(0, 5));
         encabezadoInicio.setOpaque(false);
         JLabel tituloInicio = new JLabel("Resumen general", JLabel.CENTER);
-        tituloInicio.setFont(EstilosUI.FUENTE_TITULO);
-        tituloInicio.setForeground(EstilosUI.AZUL);
+        tituloInicio.setFont(Estilo.FUENTE_TITULO);
+        tituloInicio.setForeground(Estilo.AZUL);
         JLabel descripcionInicio = new JLabel(
                 "Una vista rápida de la actividad del supermercado.", JLabel.CENTER);
-        descripcionInicio.setFont(EstilosUI.FUENTE_SUBTITULO);
-        descripcionInicio.setForeground(EstilosUI.TEXTO_SUAVE);
+        descripcionInicio.setFont(Estilo.FUENTE_SUBTITULO);
+        descripcionInicio.setForeground(Estilo.TEXTO_SUAVE);
         encabezadoInicio.add(tituloInicio, BorderLayout.NORTH);
         encabezadoInicio.add(descripcionInicio, BorderLayout.CENTER);
         add(encabezadoInicio, BorderLayout.NORTH);
@@ -46,18 +46,18 @@ public class PanelInicio extends PanelBase {
         centro.setOpaque(false);
         JPanel metricas = new JPanel(new GridLayout(1, 4, 14, 0));
         metricas.setOpaque(false);
-        metricas.add(metrica("PRODUCTOS", productos, EstilosUI.TURQUESA));
-        metricas.add(metrica("COMPRADORES", compradores, EstilosUI.AZUL_MEDIO));
-        metricas.add(metrica("BOLETAS", ventas, EstilosUI.NARANJA));
-        metricas.add(metrica("VENTAS REGISTRADAS", recaudado, EstilosUI.OLIVA));
+        metricas.add(metrica("PRODUCTOS", productos, Estilo.TURQUESA));
+        metricas.add(metrica("COMPRADORES", compradores, Estilo.AZUL_MEDIO));
+        metricas.add(metrica("BOLETAS", ventas, Estilo.NARANJA));
+        metricas.add(metrica("VENTAS REGISTRADAS", recaudado, Estilo.OLIVA));
 
         JPanel recientes = tarjeta();
         JLabel tituloTabla = new JLabel("Últimas ventas");
-        tituloTabla.setFont(EstilosUI.FUENTE_TARJETA);
-        tituloTabla.setForeground(EstilosUI.AZUL);
+        tituloTabla.setFont(Estilo.FUENTE_TARJETA);
+        tituloTabla.setForeground(Estilo.AZUL);
         tituloTabla.setBorder(BorderFactory.createEmptyBorder(0, 0, 12, 0));
         JTable tabla = new JTable(modelo);
-        EstilosUI.tabla(tabla);
+        Estilo.tabla(tabla);
         recientes.add(tituloTabla, BorderLayout.NORTH);
         recientes.add(new JScrollPane(tabla), BorderLayout.CENTER);
 
@@ -76,9 +76,9 @@ public class PanelInicio extends PanelBase {
         JPanel panel = tarjeta();
         panel.setPreferredSize(new Dimension(120, 112));
         JLabel etiqueta = new JLabel(titulo);
-        etiqueta.setFont(EstilosUI.FUENTE_ETIQUETA);
-        etiqueta.setForeground(EstilosUI.TEXTO_SUAVE);
-        valor.setFont(EstilosUI.FUENTE_METRICA);
+        etiqueta.setFont(Estilo.FUENTE_ETIQUETA);
+        etiqueta.setForeground(Estilo.TEXTO_SUAVE);
+        valor.setFont(Estilo.FUENTE_METRICA);
         valor.setForeground(color);
         panel.add(etiqueta, BorderLayout.NORTH);
         panel.add(valor, BorderLayout.CENTER);
@@ -86,12 +86,12 @@ public class PanelInicio extends PanelBase {
     }
 
     private JButton acceso(String titulo, String detalle, String vista, Consumer<String> navegar) {
-        JButton boton = EstilosUI.boton("<html><b>" + titulo + "</b><br>" + detalle + "</html>",
-                EstilosUI.BLANCO);
+        JButton boton = Estilo.boton("<html><b>" + titulo + "</b><br>" + detalle + "</html>",
+                Estilo.BLANCO);
         boton.setHorizontalAlignment(JButton.LEFT);
         boton.setVerticalAlignment(JButton.TOP);
         boton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(EstilosUI.SUAVE),
+                BorderFactory.createLineBorder(Estilo.SUAVE),
                 BorderFactory.createEmptyBorder(12, 12, 12, 12)));
         boton.addActionListener(e -> navegar.accept(vista));
         return boton;

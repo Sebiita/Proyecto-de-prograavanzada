@@ -1,6 +1,6 @@
 package cl.duocuc.supermercado.ui.vistas;
 
-import cl.duocuc.supermercado.ui.EstilosUI;
+import cl.duocuc.supermercado.ui.Estilo;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
@@ -15,7 +15,7 @@ abstract class PanelBase extends JPanel {
     PanelBase(ServicioSupermercadoUI servicio) {
         super(new BorderLayout(0, 18));
         this.servicio = servicio;
-        setBackground(EstilosUI.FONDO);
+        setBackground(Estilo.FONDO);
         setBorder(BorderFactory.createEmptyBorder(30, 34, 30, 34));
     }
 
@@ -23,11 +23,11 @@ abstract class PanelBase extends JPanel {
         JPanel panel = new JPanel(new BorderLayout(0, 5));
         panel.setOpaque(false);
         JLabel tituloLabel = new JLabel(titulo);
-        tituloLabel.setFont(EstilosUI.FUENTE_TITULO);
-        tituloLabel.setForeground(EstilosUI.AZUL);
+        tituloLabel.setFont(Estilo.FUENTE_TITULO);
+        tituloLabel.setForeground(Estilo.AZUL);
         JLabel descripcionLabel = new JLabel(descripcion);
-        descripcionLabel.setFont(EstilosUI.FUENTE_SUBTITULO);
-        descripcionLabel.setForeground(EstilosUI.TEXTO_SUAVE);
+        descripcionLabel.setFont(Estilo.FUENTE_SUBTITULO);
+        descripcionLabel.setForeground(Estilo.TEXTO_SUAVE);
         panel.add(tituloLabel, BorderLayout.NORTH);
         panel.add(descripcionLabel, BorderLayout.CENTER);
         return panel;
@@ -35,9 +35,9 @@ abstract class PanelBase extends JPanel {
 
     protected JPanel tarjeta() {
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(EstilosUI.BLANCO);
+        panel.setBackground(Estilo.BLANCO);
         panel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(EstilosUI.SUAVE),
+                BorderFactory.createLineBorder(Estilo.SUAVE),
                 BorderFactory.createEmptyBorder(16, 16, 16, 16)));
         return panel;
     }

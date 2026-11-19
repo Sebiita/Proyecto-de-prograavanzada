@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
-public final class EstilosUI {
+public final class Estilo {
 
     public static final Color FONDO = new Color(245, 247, 250);
     public static final Color BLANCO = Color.WHITE;
@@ -31,7 +31,7 @@ public final class EstilosUI {
     public static final Font FUENTE_METRICA = new Font("SansSerif", Font.BOLD, 24);
     public static final Font FUENTE_ETIQUETA = new Font("SansSerif", Font.BOLD, 10);
 
-    private EstilosUI() { }
+    private Estilo() { }
 
     public static JButton boton(String texto, Color fondo) {
         JButton boton = new JButton(texto);

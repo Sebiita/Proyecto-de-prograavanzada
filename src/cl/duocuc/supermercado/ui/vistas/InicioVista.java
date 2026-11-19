@@ -2,7 +2,7 @@ package cl.duocuc.supermercado.ui.vistas;
 
 import cl.duocuc.supermercado.sistema.ControladorSupermercado;
 import cl.duocuc.supermercado.ui.BaseFrame;
-import cl.duocuc.supermercado.ui.EstilosUI;
+import cl.duocuc.supermercado.ui.Estilo;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -24,7 +24,7 @@ public class InicioVista extends BaseFrame {
 
         JPanel pie = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 8));
         pie.setOpaque(false);
-        JButton salir = EstilosUI.boton("Salir", EstilosUI.AZUL);
+        JButton salir = Estilo.boton("Salir", Estilo.AZUL);
         salir.addActionListener(e -> salir());
         pie.add(salir);
         add(pie, BorderLayout.SOUTH);

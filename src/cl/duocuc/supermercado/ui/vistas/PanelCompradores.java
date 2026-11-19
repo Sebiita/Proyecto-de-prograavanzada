@@ -2,7 +2,7 @@ package cl.duocuc.supermercado.ui.vistas;
 
 import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
 import cl.duocuc.supermercado.modelo.Comprador;
-import cl.duocuc.supermercado.ui.EstilosUI;
+import cl.duocuc.supermercado.ui.Estilo;
 import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -30,13 +30,13 @@ public class PanelCompradores extends PanelBase {
         tarjeta.setPreferredSize(new Dimension(850, 300));
         tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 300));
         JLabel titulo = new JLabel("Registro de clientes");
-        titulo.setFont(EstilosUI.FUENTE_TARJETA);
-        titulo.setForeground(EstilosUI.AZUL);
-        JButton nuevo = EstilosUI.boton("＋ Nuevo comprador", EstilosUI.TURQUESA);
+        titulo.setFont(Estilo.FUENTE_TARJETA);
+        titulo.setForeground(Estilo.AZUL);
+        JButton nuevo = Estilo.boton("＋ Nuevo comprador", Estilo.TURQUESA);
         nuevo.setPreferredSize(new Dimension(220, 48));
         nuevo.setMinimumSize(new Dimension(220, 48));
         JTable tabla = new JTable(modelo);
-        EstilosUI.tabla(tabla);
+        Estilo.tabla(tabla);
         JScrollPane desplazamiento = new JScrollPane(tabla);
         desplazamiento.setPreferredSize(new Dimension(850, 220));
 
@@ -88,7 +88,8 @@ public class PanelCompradores extends PanelBase {
         try {
             servicio.agregarComprador(rutIngresado, nombreIngresado);
             actualizar();
-            JOptionPane.showMessageDialog(this, "Comprador agregado y guardado.", "Registro completo",
+            JOptionPane.showMessageDialog(this, "Comprador registrado:\n"
+                    + nombreIngresado + " · RUT " + rutIngresado, "Registro completo",
                     JOptionPane.INFORMATION_MESSAGE);
         } catch (DatoInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "No se pudo agregar",
