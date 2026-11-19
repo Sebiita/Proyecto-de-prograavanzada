@@ -1,4 +1,4 @@
-package cl.duocuc.supermercado.excepciones;
+package supermercado.excepciones;
 
 public class DatoInvalidoException extends RuntimeException {
 

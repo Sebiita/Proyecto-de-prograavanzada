@@ -1,4 +1,4 @@
-package cl.duocuc.supermercado.modelo;
+package supermercado.modelo;
 
 import java.io.Serializable;
 import java.util.HashMap;

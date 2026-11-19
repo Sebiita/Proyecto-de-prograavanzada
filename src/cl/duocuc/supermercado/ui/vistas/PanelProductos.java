@@ -1,10 +1,10 @@
-package cl.duocuc.supermercado.ui.vistas;
+package supermercado.ui.vistas;
 
-import cl.duocuc.supermercado.enums.Medida;
-import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
-import cl.duocuc.supermercado.modelo.Producto;
-import cl.duocuc.supermercado.ui.Estilo;
-import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
+import supermercado.enums.Medida;
+import supermercado.excepciones.DatoInvalidoException;
+import supermercado.modelo.Producto;
+import supermercado.ui.Estilo;
+import supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.io.File;

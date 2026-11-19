@@ -1,6 +1,6 @@
-package cl.duocuc.supermercado.modelo;
+package supermercado.modelo;
 
-import cl.duocuc.supermercado.enums.Medida;
+import supermercado.enums.Medida;
 import java.io.Serializable;
 
 public class Limpieza extends Producto implements Serializable {

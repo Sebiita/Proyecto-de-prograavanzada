@@ -1,13 +1,13 @@
-package cl.duocuc.supermercado.ui.vistas;
+package supermercado.ui.vistas;
 
-import cl.duocuc.supermercado.enums.CategoriaOferta;
-import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
-import cl.duocuc.supermercado.excepciones.StockInsuficienteException;
-import cl.duocuc.supermercado.modelo.Boleta;
-import cl.duocuc.supermercado.modelo.Comprador;
-import cl.duocuc.supermercado.modelo.Producto;
-import cl.duocuc.supermercado.ui.Estilo;
-import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
+import supermercado.enums.CategoriaOferta;
+import supermercado.excepciones.DatoInvalidoException;
+import supermercado.excepciones.StockInsuficienteException;
+import supermercado.modelo.Boleta;
+import supermercado.modelo.Comprador;
+import supermercado.modelo.Producto;
+import supermercado.ui.Estilo;
+import supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;

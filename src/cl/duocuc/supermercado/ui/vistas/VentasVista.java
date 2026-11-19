@@ -1,7 +1,7 @@
-package cl.duocuc.supermercado.ui.vistas;
+package supermercado.ui.vistas;
 
-import cl.duocuc.supermercado.sistema.ControladorSupermercado;
-import cl.duocuc.supermercado.ui.BaseFrame;
+import supermercado.sistema.ControladorSupermercado;
+import supermercado.ui.BaseFrame;
 
 @SuppressWarnings("serial")
 public class VentasVista extends BaseFrame {

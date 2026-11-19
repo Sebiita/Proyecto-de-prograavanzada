@@ -1,6 +1,6 @@
-package cl.duocuc.supermercado.util;
+package supermercado.util;
 
-import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
+import supermercado.excepciones.DatoInvalidoException;
 
 public final class Validador {
 

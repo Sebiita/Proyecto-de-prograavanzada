@@ -1,4 +1,4 @@
-package cl.duocuc.supermercado.enums;
+package supermercado.enums;
 
 public enum CategoriaOferta {
     DOS_POR_UNO,

@@ -1,7 +1,7 @@
-package cl.duocuc.supermercado.modelo;
+package supermercado.modelo;
 
-import cl.duocuc.supermercado.interfaces.Rankeable;
-import cl.duocuc.supermercado.util.Validador;
+import supermercado.interfaces.Rankeable;
+import supermercado.util.Validador;
 import java.io.Serializable;
 import java.util.ArrayList;
 

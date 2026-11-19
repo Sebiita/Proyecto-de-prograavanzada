@@ -1,9 +1,9 @@
-package cl.duocuc.supermercado.modelo;
+package supermercado.modelo;
 
-import cl.duocuc.supermercado.enums.Medida;
-import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
-import cl.duocuc.supermercado.interfaces.Rankeable;
-import cl.duocuc.supermercado.util.Validador;
+import supermercado.enums.Medida;
+import supermercado.excepciones.DatoInvalidoException;
+import supermercado.interfaces.Rankeable;
+import supermercado.util.Validador;
 import java.io.Serializable;
 
 public abstract class Producto implements Rankeable, Serializable {

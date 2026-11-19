@@ -1,7 +1,7 @@
-package cl.duocuc.supermercado.ui;
+package supermercado.ui;
 
-import cl.duocuc.supermercado.sistema.ControladorSupermercado;
-import cl.duocuc.supermercado.ui.vistas.InicioVista;
+import supermercado.sistema.ControladorSupermercado;
+import supermercado.ui.vistas.InicioVista;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

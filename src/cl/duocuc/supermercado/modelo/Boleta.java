@@ -1,8 +1,8 @@
-package cl.duocuc.supermercado.modelo;
+package supermercado.modelo;
 
-import cl.duocuc.supermercado.enums.CategoriaOferta;
-import cl.duocuc.supermercado.excepciones.DatoInvalidoException;
-import cl.duocuc.supermercado.util.Validador;
+import supermercado.enums.CategoriaOferta;
+import supermercado.excepciones.DatoInvalidoException;
+import supermercado.util.Validador;
 import java.io.Serializable;
 import java.util.ArrayList;
 

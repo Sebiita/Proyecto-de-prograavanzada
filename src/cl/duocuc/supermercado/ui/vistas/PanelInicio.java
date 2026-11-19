@@ -1,8 +1,8 @@
-package cl.duocuc.supermercado.ui.vistas;
+package supermercado.ui.vistas;
 
-import cl.duocuc.supermercado.modelo.Boleta;
-import cl.duocuc.supermercado.ui.Estilo;
-import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
+import supermercado.modelo.Boleta;
+import supermercado.ui.Estilo;
+import supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

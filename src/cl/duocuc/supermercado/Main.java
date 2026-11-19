@@ -1,7 +1,7 @@
-package cl.duocuc.supermercado;
+package supermercado;
 
-import cl.duocuc.supermercado.sistema.ControladorSupermercado;
-import cl.duocuc.supermercado.ui.vistas.InicioVista;
+import supermercado.sistema.ControladorSupermercado;
+import supermercado.ui.vistas.InicioVista;
 import javax.swing.SwingUtilities;
 
 public class Main {

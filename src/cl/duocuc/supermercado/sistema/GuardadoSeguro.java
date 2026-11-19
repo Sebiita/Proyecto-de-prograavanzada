@@ -1,9 +1,9 @@
-package cl.duocuc.supermercado.sistema;
+package supermercado.sistema;
 
-import cl.duocuc.supermercado.interfaces.Registrable;
-import cl.duocuc.supermercado.modelo.Boleta;
-import cl.duocuc.supermercado.modelo.Comprador;
-import cl.duocuc.supermercado.modelo.Inventario;
+import supermercado.interfaces.Registrable;
+import supermercado.modelo.Boleta;
+import supermercado.modelo.Comprador;
+import supermercado.modelo.Inventario;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

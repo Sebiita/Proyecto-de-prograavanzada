@@ -1,4 +1,4 @@
-package cl.duocuc.supermercado.ui;
+package supermercado.ui;
 
 import java.awt.Color;
 import java.awt.Font;

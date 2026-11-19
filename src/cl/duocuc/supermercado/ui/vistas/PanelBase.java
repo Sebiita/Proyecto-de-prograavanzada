@@ -1,7 +1,7 @@
-package cl.duocuc.supermercado.ui.vistas;
+package supermercado.ui.vistas;
 
-import cl.duocuc.supermercado.ui.Estilo;
-import cl.duocuc.supermercado.ui.ServicioSupermercadoUI;
+import supermercado.ui.Estilo;
+import supermercado.ui.ServicioSupermercadoUI;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;

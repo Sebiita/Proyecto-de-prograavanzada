@@ -1,4 +1,4 @@
-package cl.duocuc.supermercado.interfaces;
+package supermercado.interfaces;
 
 public interface Rankeable {
 
